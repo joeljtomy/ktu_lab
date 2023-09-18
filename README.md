@@ -1,3 +1,3 @@
-# Programming in C
-- B tech KTU S2 Programming in C lab
+# Programming
+- B tech KTU Lab
 - code & algorithm
