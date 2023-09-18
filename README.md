@@ -1,3 +1,3 @@
-# Programming
-- B tech KTU Lab
-- code & algorithm
+# KTU Lab Work
+- B tech IT KTU Lab 
+- Code & Algorithm
