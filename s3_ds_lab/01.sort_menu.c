@@ -124,19 +124,25 @@ Step 4: Declare arrays arr[n].
 Step 5: Read array elements into arr[].
 Step 6: Repeat the following steps until opt is 4:
      6.1 Display the menu for sorting options:
-          Bubble Sort (1)
-          Selection Sort (2)
-          Insertion Sort (3)
-          Exit (4)
+         Bubble Sort (1)
+         Selection Sort (2)
+         Insertion Sort (3)
+         Exit (4)
      6.2 Read the user's choice into opt.
      6.3 If opt is 1:
-     6.3.1 Call bubbleSort(arr, n) to sort arr using bubble sort.
+     6.3.1 Perform the Bubble Sort algorithm:
+         - Compare each element with its adjacent element and swap if needed.
+         - Repeat this process until the array is sorted.
      6.3.2 Print the sorted array.
      6.4 Else if opt is 2:
-     6.4.1 Call selectionSort(arr, n) to sort arr using selection sort.
+     6.4.1 Perform the Selection Sort algorithm:
+         - Find the smallest element and swap it with the first unsorted element.
+         - Repeat this process for the remaining unsorted portion of the array.
      6.4.2 Print the sorted array.
      6.5 Else if opt is 3:
-     6.5.1 Call insertionSort(arr, n) to sort arr using insertion sort.
+     6.5.1 Perform the Insertion Sort algorithm:
+         - Divide the array into a sorted and an unsorted region.
+         - Take elements from the unsorted region and insert them into their correct position in the sorted region.
      6.5.2 Print the sorted array.
      6.6 Else if opt is 4:
      6.6.1 Exit the program.
