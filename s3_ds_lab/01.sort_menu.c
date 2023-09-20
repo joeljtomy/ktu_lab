@@ -42,7 +42,7 @@ void insertionSort(int arr[], int n)
         while (j >= 0 && arr[j] > key)
         {
             arr[j + 1] = arr[j];
-            j = j - 1;
+            j--;
         }
         arr[j + 1] = key;
     }
@@ -55,14 +55,25 @@ void printArray(int arr[], int n)
     printf("\n");
 }
 
+void sortArray(int opt, int arr[], int n, int original[])
+{
+    for (int i = 0; i < n; i++) arr[i] = original[i];
+    if (opt == 1) bubbleSort(arr, n);
+    else if (opt == 2) selectionSort(arr, n);
+    else insertionSort(arr, n);
+    printf("Sorted array: ");
+    printArray(arr, n);
+}
+
+
 int main()
 {
-    int n, i, j, opt;
+    int n, opt;
 
     printf("Enter the size of array: ");
     scanf("%d", &n);
 
-    int arr[n];
+    int arr[n], original[n];
 
     printf("Enter array elements:\n");
     for (int i = 0; i < n; i++)
@@ -70,6 +81,7 @@ int main()
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
     }
+    for (int i = 0; i < n; i++) original[i] = arr[i];
 
     printf("Original array: ");
     printArray(arr, n);
@@ -82,16 +94,13 @@ int main()
         switch (opt)
         {
         case 1:
-            bubbleSort(arr, n);
-            printArray(arr, n);
+            sortArray(1, arr, n, original);
             break;
         case 2:
-            selectionSort(arr, n);
-            printArray(arr, n);
+            sortArray(2, arr, n, original);
             break;
         case 3:
-            insertionSort(arr,n);
-            printArray(arr, n);
+            sortArray(3, arr, n, original);
             break;
         case 4:
             exit(0);
