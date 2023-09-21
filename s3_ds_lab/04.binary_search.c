@@ -39,26 +39,27 @@ int main()
     printf("Enter the element to search: ");
     scanf("%d", &key);
 
-    int low = 0, mid = (n - 1) / 2, high = n - 1;
-    while (1)
+    int low = 0, high = n - 1;
+    if (key >= arr[low] && key <= arr[high])
     {
-        if (arr[mid] == key)
+        while (low - 1 < high)
         {
-            found = 1;
-            index = mid;
-            break;
-        }
-        else if (low == mid - 1)
-            break;
-        else if (arr[mid] < key)
-        {
-            low = mid;
-            mid = mid + ((high - mid) / 2);
-        }
-        else if (arr[mid] > key)
-        {
-            high = mid;
-            mid = low + ((high - low) / 2);
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == key)
+            {
+                found = 1;
+                index = mid;
+                break;
+            }
+            if (arr[mid] < key)
+            {
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid - 1;
+            }
         }
     }
 

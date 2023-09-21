@@ -6,7 +6,7 @@ divisor = int(input("Enter the divisor (integer): "))
 print("The quotient is: ", dividend // divisor)
 print("And the remainder is: ", dividend % divisor)
 
-#Algorithm
+# Algorithm
 # 1. Prompt the user to enter the dividend and divisor and store them in a variable.
 # 2. Convert the dividend and divisor into integers.
 # 3. Calculate Quotient and Remainder:
