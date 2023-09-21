@@ -1,0 +1,17 @@
+ Programs
+
+1.  Develop a C program to implement insertion sort, Selection sort and bubble sort.
+2.  Design a program to Implement Quick sort and Merge sort.
+3.  Create Program for Linear Search.
+4.  Create Program for Binary Search.
+5.  Create a menu driven program to implement singly linked list operations with options 
+    for insertion, deletion, search and traversal. 
+6.  Apply linked list concept to perform polynomial addition. 
+7.  Develop a program to perform stack operations using array.
+8.  Develop a program to perform stack operations using linked list. 
+9.  Perform queue operations using array.
+10. Perform queue operations using linked list.
+11. Develop a program to perform pre order, in-order, post order traversals on binary Trees.
+12. Apply stack to perform Infix to postfix conversion and Postfix evaluation.
+13. Simulate first fit, best fit and worst fit memory allocation strategies using linked list
+14. Apply Queue and stack in Breadth First Search and Depth First Search respectively.
