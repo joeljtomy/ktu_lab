@@ -8,7 +8,7 @@ else:
     print("The number is odd")
 
 # Algorithm
-# 1. Prompt the user to enter a number and store them in a variable.
+# 1. Prompt the user to enter a number and store it in a variable.
 # 2. Convert the number to an integer.
 # 3. Calculate the remainder of the number divided by 2 (num % 2).
 #    3.1. If remainder is 0, then print number is even.

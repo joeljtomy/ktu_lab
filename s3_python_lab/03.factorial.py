@@ -1,25 +1,22 @@
 # 3.  Find the factorial of number.
 
-def factorial(num):
-    if (num <= 1):
-        return 1
-    else:
-        return num * factorial(num - 1)
-
-
 num = int(input("Enter a number: "))
-if (num < 0):
+
+if num < 0:
     print("Negative number is not allowed")
 else:
-    fact = factorial(num)
+    fact = 1
+    for i in range(1, num + 1):
+        fact *= i
+
     print("Factorial of {num} is {fact}".format(num=num, fact=fact))
 
 # Algorithm
-# 1. Define a recursive function named factorial(num)
-# 1.1. If num <= 1 : return 1
-# 1.2. Else : return num * factorial(num - 1)
-# 2. Prompt the user to enter a number and store it in a variable.
-# 3. Convert the numer into integer.
-# 4. Call the function factorial with the number and store the return value
-#    in a variable named fact.
-# 5. Display the factorial stored in fact.
+# 1. Prompt the user to enter a number and store it in a variable.
+# 2. Convert the number to an integer.
+# 3. If num < 0 : Display Negative number is not allowed
+# 4. Else : Calculate factorial
+# 4.1. define fact = 1
+# 4.2. Repeat the step 4.3 for i in range(1, num + 1) 
+# 4.3. fact = fact * i
+# 4.4. Display the factorial stored in fact.
