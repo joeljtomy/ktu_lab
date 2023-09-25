@@ -7,9 +7,11 @@ print("The quotient is: ", dividend // divisor)
 print("And the remainder is: ", dividend % divisor)
 
 # Algorithm
-# 1. Prompt the user to enter the dividend and divisor and store them in a variable.
-# 2. Convert the dividend and divisor into integers.
-# 3. Calculate Quotient and Remainder:
-#    3.1. Quotient = dividend // divisor
-#    3.2. Remainder = dividend % divisor
-# 4. Display the quotient and remainder to the user.
+# 1. Start
+# 2. Prompt the user to enter the dividend and divisor and store them in a variable.
+# 3. Convert the dividend and divisor into integers.
+# 4. Calculate Quotient and Remainder:
+#    4.1. Quotient = dividend // divisor
+#    4.2. Remainder = dividend % divisor
+# 5. Display the quotient and remainder to the user.
+# 6. Stop
