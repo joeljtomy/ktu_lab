@@ -40,27 +40,21 @@ int main()
     scanf("%d", &key);
 
     int low = 0, high = n - 1;
-    if (key >= arr[low] && key <= arr[high])
-    {
-        while (low - 1 < high)
-        {
-            int mid = low + (high - low) / 2;
 
-            if (arr[mid] == key)
-            {
-                found = 1;
-                index = mid;
-                break;
-            }
-            if (arr[mid] < key)
-            {
-                low = mid + 1;
-            }
-            else
-            {
-                high = mid - 1;
-            }
+    while (low - 1 < high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == key)
+        {
+            found = 1;
+            index = mid;
+            break;
         }
+        if (arr[mid] < key)
+            low = mid + 1;
+        else
+            high = mid - 1;
     }
 
     if (found)
