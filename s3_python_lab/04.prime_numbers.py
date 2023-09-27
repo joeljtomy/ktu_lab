@@ -1,29 +1,15 @@
 # 4.  Print all prime numbers with in an interval.
 
-import math
-
 low = int(input("Enter the low of the range: "))
 high = int(input("Enter the high of the range: "))
-prime_numbers = []
 
 if low < 2:
     low = 2
-
 for num in range(low, high + 1):
-    isPrime = True
-    for x in range(2, int(math.sqrt(num)) + 1):
+    for x in range(2, num // 2 + 1):
         if num % x == 0:
-            isPrime = False
             break
-    if isPrime:
-        prime_numbers.append(num)
-
-if len(prime_numbers):
-    print("Prime numbers are: {prime_numbers}".format(
-        prime_numbers=prime_numbers))
-else:
-    print("No prime numbers in the range")
-
+    else : print(x, end = ", ")
 
 # Algorithm
 # 1. Start

@@ -3,11 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int i, j;
+
 void bubbleSort(int arr[], int n)
 {
-    for (int i = 0; i < n - 1; i++)
+    for (i = 0; i < n - 1; i++)
     {
-        for (int j = 0; j < n - i - 1; j++)
+        for (j = 0; j < n - i - 1; j++)
         {
             if (arr[j] > arr[j + 1])
             {
@@ -21,10 +23,10 @@ void bubbleSort(int arr[], int n)
 
 void selectionSort(int arr[], int n)
 {
-    for (int i = 0; i < n - 1; i++)
+    for (i = 0; i < n - 1; i++)
     {
         int minIndex = i;
-        for (int j = i + 1; j < n; j++)
+        for (j = i + 1; j < n; j++)
         {
             if (arr[j] < arr[minIndex])
                 minIndex = j;
@@ -37,7 +39,7 @@ void selectionSort(int arr[], int n)
 
 void insertionSort(int arr[], int n)
 {
-    for (int i = 1; i < n; i++)
+    for (i = 1; i < n; i++)
     {
         int key = arr[i];
         int j = i - 1;
@@ -52,14 +54,14 @@ void insertionSort(int arr[], int n)
 
 void printArray(int arr[], int n)
 {
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
         printf("%d ", arr[i]);
     printf("\n");
 }
 
 void sortArray(int opt, int arr[], int n, int original[])
 {
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
         arr[i] = original[i];
     if (opt == 1)
         bubbleSort(arr, n);
@@ -73,7 +75,7 @@ void sortArray(int opt, int arr[], int n, int original[])
 
 int main()
 {
-    int n, opt;
+    int i, n, opt;
 
     printf("Enter the size of array: ");
     scanf("%d", &n);
@@ -81,12 +83,12 @@ int main()
     int arr[n], original[n];
 
     printf("Enter array elements:\n");
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
     }
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
         original[i] = arr[i];
 
     printf("Original array: ");

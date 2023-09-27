@@ -4,7 +4,7 @@
 
 int main()
 {
-    int n, key, found, index;
+    int i, j, n, key, found, index;
 
     printf("Enter the size of array: ");
     scanf("%d", &n);
@@ -12,15 +12,15 @@ int main()
     int arr[n];
 
     printf("Enter array elements:\n");
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
     }
 
-    for (int i = 0; i < n - 1; i++)
+    for (i = 0; i < n - 1; i++)
     {
-        for (int j = 0; j < n - i - 1; j++)
+        for (j = 0; j < n - i - 1; j++)
         {
             if (arr[j] > arr[j + 1])
             {
@@ -32,7 +32,7 @@ int main()
     }
 
     printf("Sorted array: ");
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
         printf("%d ", arr[i]);
     printf("\n");
 
