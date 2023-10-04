@@ -43,7 +43,7 @@ int main()
 
     while (low - 1 < high)
     {
-        int mid = low + (high - low) / 2;
+        int mid = (low + high) / 2;
 
         if (arr[mid] == key)
         {

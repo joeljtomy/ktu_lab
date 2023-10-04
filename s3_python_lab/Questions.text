@@ -4,17 +4,17 @@
 2.  Check whether an entered number is odd or even.
 3.  Find the factorial of number.
 4.  Print all prime numbers with in an interval.
-5.  Find the number of occurrences of a given substring in a string. 
+5.  Find the number of occurrences of a given substring in a string.
 6.  Count the number of vowels, consonants, words and question marks in a given string.
 7.  Search an element in a list.
 8.  Input a list of n numbers. Calculate and display the average of numbers. Also display
     the square of each value in the list.
-9.  Add two matrices. 
+9.  Add two matrices.
 10. Develop a python program to create a dictionary of phone numbers and names of n persons.
     Display the contents of the dictionary in alphabetical order of their names.
 11. Find the value of nCr using a function.
-12. Implement a calculator with functions like add, subtract, multiply, divide, exponent etc. 
-13. Find the factorial of a given number using recursion. 
+12. Implement a calculator with functions like add, subtract, multiply, divide, exponent etc.
+13. Find the factorial of a given number using recursion.
 14. Find nth Fibonacci number using recursion. 
 15. Develop a Python program to implement the following scenario. A bookshop’s details
     contain the title of the book and Number of copies of each title. As books are added
