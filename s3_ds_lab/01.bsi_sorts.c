@@ -140,7 +140,7 @@ Step 10: Else if opt is 3:
         - Take elements from the unsorted region and insert them into their correct position in the sorted region.
      10.2 Print the sorted array.
 Step 11: Else if opt is 4:
-     11.1 Exit the program.
+     11.1 Exit the loop.
 Step 12: Else:
      12.1 Print "Invalid choice!!!"
 Step 13: Stop
