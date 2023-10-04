@@ -59,20 +59,6 @@ void printArray(int arr[], int n)
     printf("\n");
 }
 
-void sortArray(int opt, int arr[], int n, int original[])
-{
-    for (i = 0; i < n; i++)
-        arr[i] = original[i];
-    if (opt == 1)
-        bubbleSort(arr, n);
-    else if (opt == 2)
-        selectionSort(arr, n);
-    else
-        insertionSort(arr, n);
-    printf("Sorted array: ");
-    printArray(arr, n);
-}
-
 int main()
 {
     int i, n, opt;
@@ -87,34 +73,39 @@ int main()
     {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
+        original[i] =   arr[i];
     }
-    for (i = 0; i < n; i++)
-        original[i] = arr[i];
 
     printf("Original array: ");
-    printArray(arr, n);
+    printArray(original, n);
 
     while (1)
     {
         printf("\nSelect operation from menu\n");
-        printf("\t\tMENU\nl.Bubble sort\n2.Selection sort\n3.Insertion sort\n4.Exit\n");
+        printf("MENU : l.Bubble sort,  2.Selection sort,  3.Insertion sort,  4.Exit\n");
         scanf("%d", &opt);
+        for (i = 0; i < n; i++)
+            arr[i] = original[i];
         switch (opt)
         {
         case 1:
-            sortArray(1, arr, n, original);
+            bubbleSort(arr, n);
             break;
         case 2:
-            sortArray(2, arr, n, original);
+            selectionSort(arr, n);
             break;
         case 3:
-            sortArray(3, arr, n, original);
+            insertionSort(arr, n);
             break;
         case 4:
+            printf("Program exited.\n");
             exit(0);
         default:
             printf("Invalid choice!!!\n");
+            continue;
         }
+        printf("Sorted array: ");
+        printArray(arr, n);
     }
 
     return 0;
