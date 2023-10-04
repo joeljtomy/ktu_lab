@@ -1,6 +1,6 @@
 # 5.  Find the number of occurrences of a given substring in a string.
 
-string = input("Enter a string: ")
+string = input("Enter a string: ").strip()
 sub_str = input("Enter the substring to count: ")
 word = ''
 count = 0
@@ -14,7 +14,6 @@ for i in range(0, len(string)):
         word = ''
 if word == sub_str:
     count = count + 1
-
 
 print("Total {count} occurrences of '{sub_str}'".format(
     count=count, sub_str=sub_str))
@@ -34,4 +33,5 @@ print("Total {count} occurrences of '{sub_str}'".format(
 #        word = ''
 # 6. If word == sub_str :
 # 6.1. count = count + 1
-# 7. Stop
+# 7. Print Total occurrences {count}
+# 8. Stop
