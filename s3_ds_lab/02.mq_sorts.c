@@ -169,13 +169,20 @@ Step 7: Display the menu for sorting options:
      7.2: Read the user's choice into opt.
 Step 8: If opt is 1:
      8.1 Perform the Merge Sort algorithm:
-       - Compare each element with its adjacent element and swap if needed.
-       - Repeat this process until the array is sorted.
+      - If the array has only one or zero elements, it is already sorted.
+      - If the array has more than one element:
+            - Divide the array into two roughly equal halves.
+            - Recursively apply Merge Sort to each half.
+            - Merge the sorted halves back into one sorted array.
      8.2 Print the sorted array.
 Step 9: Else if opt is 2:
      9.1 Perform the Quick Sort algorithm:
-       - Find the smallest element and swap it with the first unsorted element.
-       - Repeat this process for the remaining unsorted portion of the array.
+      - If the array has one or zero elements, it is already considered sorted.
+      - If the array has more than one element:
+            - Choose a 'pivot' element from the array.
+            - Partition the array such that elements smaller than the pivot are on the left,
+              and larger ones are on the right.
+            - Recursively apply Quick Sort to the subarrays on the left and right of the pivot.
      9.2 Print the sorted array.
 Step 10: Else if opt is 3:
      10.1 Exit the loop.
