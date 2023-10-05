@@ -5,35 +5,97 @@
 
 int i, j;
 
-void mergeSort(int arr[], int n)
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void mergeSort(int arr[], int l, int r)
 {
-    for (i = 0; i < n - 1; i++)
+    if (l < r)
     {
-        for (j = 0; j < n - i - 1; j++)
+        // Same as (l+r)/2, but avoids overflow for large l and h
+        int m = l + (r - l) / 2;
+
+        // Sort first and second halves
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        int i, j, k;
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        // Create temporary arrays
+        int L[n1], R[n2];
+
+        // Copy data to temporary arrays L[] and R[]
+        for (i = 0; i < n1; i++)
+            L[i] = arr[l + i];
+        for (j = 0; j < n2; j++)
+            R[j] = arr[m + 1 + j];
+
+        // Merge the temporary arrays back into arr[l..r]
+        i = 0;
+        j = 0;
+        k = l;
+        while (i < n1 && j < n2)
         {
-            if (arr[j] > arr[j + 1])
+            if (L[i] <= R[j])
             {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                arr[k] = L[i];
+                i++;
             }
+            else
+            {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Copy the remaining elements of L[], if there are any
+        while (i < n1)
+        {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        // Copy the remaining elements of R[], if there are any
+        while (j < n2)
+        {
+            arr[k] = R[j];
+            j++;
+            k++;
         }
     }
 }
 
-void quickSort(int arr[], int n)
+void quickSort(int arr[], int low, int high)
 {
-    for (i = 0; i < n - 1; i++)
+    if (low < high)
     {
-        int minIndex = i;
-        for (j = i + 1; j < n; j++)
+        // Partition the array and get the index of the pivot element
+        int pivot = arr[high]; // Pivot
+        int i = (low - 1);     // Index of smaller element
+
+        for (int j = low; j < high; j++)
         {
-            if (arr[j] < arr[minIndex])
-                minIndex = j;
+            // If the current element is smaller than or equal to the pivot
+            if (arr[j] <= pivot)
+            {
+                i++;
+                swap(&arr[i], &arr[j]);
+            }
         }
-        int temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
+
+        // Place the pivot element at its correct position
+        swap(&arr[i + 1], &arr[high]);
+        int pi = i + 1;
+        // Sort the elements on the left and right of the pivot
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
     }
 }
 
@@ -58,7 +120,7 @@ int main()
     {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
-        original[i] =   arr[i];
+        original[i] = arr[i];
     }
 
     printf("Original array: ");
@@ -74,10 +136,10 @@ int main()
         switch (opt)
         {
         case 1:
-            mergeSort(arr, n);
+            mergeSort(arr, 0, n - 1);
             break;
         case 2:
-            quickSort(arr, n);
+            quickSort(arr, 0, n - 1);
             break;
         case 3:
             printf("Program exited.\n");
