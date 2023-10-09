@@ -4,7 +4,7 @@
 
 int main()
 {
-    int i, j, n, key, found, index;
+    int i, j, n, key, found = 0, index;
 
     printf("Enter the size of array: ");
     scanf("%d", &n);
@@ -23,7 +23,7 @@ int main()
 
     int low = 0, high = n - 1;
 
-    while (low - 1 < high)
+    while (low <= high)
     {
         int mid = (low + high) / 2;
 
