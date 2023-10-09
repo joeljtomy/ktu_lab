@@ -5,97 +5,70 @@
 
 int i, j;
 
+void mergeSort(int arr[], int start, int end)
+{
+    if (start < end)
+    {
+        int middle = (start + end) / 2;
+
+        mergeSort(arr, start, middle);
+        mergeSort(arr, middle + 1, end);
+
+        int i, j, k;
+        int n1 = middle - start + 1;
+        int n2 = end - middle;
+
+        int left[n1], right[n2];
+
+        for (i = 0; i < n1; i++)
+            left[i] = arr[start + i];
+        for (j = 0; j < n2; j++)
+            right[j] = arr[middle + 1 + j];
+
+        i = 0;
+        j = 0;
+        k = start;
+        while (i < n1 || j < n2)
+        {
+            if (j >= n2 || left[i] <= right[j])
+            {
+                arr[k] = left[i];
+                i++;
+            }
+            else if (i >= n1 || left[i] > right[j])
+            {
+                arr[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+    }
+}
+
 void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-void mergeSort(int arr[], int l, int r)
+void quickSort(int arr[], int start, int end)
 {
-    if (l < r)
+    if (start < end)
     {
-        // Same as (l+r)/2, but avoids overflow for large l and h
-        int m = l + (r - l) / 2;
+        int pivotIndex = start; 
+        int pivotValue = arr[end];
 
-        // Sort first and second halves
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-
-        int i, j, k;
-        int n1 = m - l + 1;
-        int n2 = r - m;
-
-        // Create temporary arrays
-        int L[n1], R[n2];
-
-        // Copy data to temporary arrays L[] and R[]
-        for (i = 0; i < n1; i++)
-            L[i] = arr[l + i];
-        for (j = 0; j < n2; j++)
-            R[j] = arr[m + 1 + j];
-
-        // Merge the temporary arrays back into arr[l..r]
-        i = 0;
-        j = 0;
-        k = l;
-        while (i < n1 && j < n2)
-        {
-            if (L[i] <= R[j])
-            {
-                arr[k] = L[i];
-                i++;
-            }
-            else
-            {
-                arr[k] = R[j];
-                j++;
-            }
-            k++;
-        }
-
-        // Copy the remaining elements of L[], if there are any
-        while (i < n1)
-        {
-            arr[k] = L[i];
-            i++;
-            k++;
-        }
-
-        // Copy the remaining elements of R[], if there are any
-        while (j < n2)
-        {
-            arr[k] = R[j];
-            j++;
-            k++;
-        }
-    }
-}
-
-void quickSort(int arr[], int low, int high)
-{
-    if (low < high)
-    {
-        // Partition the array and get the index of the pivot element
-        int pivot = arr[high]; // Pivot
-        int i = (low - 1);     // Index of smaller element
-
-        for (j = low; j < high; j++)
-        {
-            // If the current element is smaller than or equal to the pivot
-            if (arr[j] <= pivot)
-            {
-                i++;
-                swap(&arr[i], &arr[j]);
+        for (i = start; i < end; i++) {
+            if (arr[i] < pivotValue) {
+                swap(&arr[i], &arr[pivotIndex]);
+                pivotIndex++;
             }
         }
 
-        // Place the pivot element at its correct position
-        swap(&arr[i + 1], &arr[high]);
-        int pi = i + 1;
-        // Sort the elements on the left and right of the pivot
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+        swap(&arr[pivotIndex], &arr[end]);
+
+        quickSort(arr, start, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, end);
     }
 }
 
