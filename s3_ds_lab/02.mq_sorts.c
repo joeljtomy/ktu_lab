@@ -80,7 +80,7 @@ void quickSort(int arr[], int low, int high)
         int pivot = arr[high]; // Pivot
         int i = (low - 1);     // Index of smaller element
 
-        for (int j = low; j < high; j++)
+        for (j = low; j < high; j++)
         {
             // If the current element is smaller than or equal to the pivot
             if (arr[j] <= pivot)
