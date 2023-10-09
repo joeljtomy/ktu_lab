@@ -82,7 +82,7 @@ int main()
     while (1)
     {
         printf("\nSelect operation from menu\n");
-        printf("MENU : l.Bubble sort,  2.Selection sort,  3.Insertion sort,  4.Exit\n");
+        printf("MENU : l.Bubble sort | 2.Selection sort | 3.Insertion sort | 4.Exit\n");
         scanf("%d", &opt);
         for (i = 0; i < n; i++)
             arr[i] = original[i];
