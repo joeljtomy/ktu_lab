@@ -138,7 +138,7 @@ Step 6: Repeat the steps 7 to 11 in loop
 Step 7: Display the menu for sorting options:
          Merge Sort (1)
          Quick Sort (2)
-         Exit (4)
+         Exit (3)
      7.2: Read the user's choice into opt.
 Step 8: If opt is 1:
      8.1 Perform the Merge Sort algorithm:
