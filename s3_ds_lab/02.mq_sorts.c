@@ -14,7 +14,6 @@ void mergeSort(int arr[], int start, int end)
         mergeSort(arr, start, middle);
         mergeSort(arr, middle + 1, end);
 
-        int i, j, k;
         int n1 = middle - start + 1;
         int n2 = end - middle;
 
@@ -27,15 +26,15 @@ void mergeSort(int arr[], int start, int end)
 
         i = 0;
         j = 0;
-        k = start;
+        int k = start;
         while (i < n1 || j < n2)
         {
-            if (j >= n2 || left[i] <= right[j])
+            if ((j >= n2 || left[i] <= right[j]) && i < n1)
             {
                 arr[k] = left[i];
                 i++;
             }
-            else if (i >= n1 || left[i] > right[j])
+            else if ((i >= n1 || left[i] > right[j]) && j < n2)
             {
                 arr[k] = right[j];
                 j++;
@@ -45,7 +44,8 @@ void mergeSort(int arr[], int start, int end)
     }
 }
 
-void swap(int *a, int *b) {
+void swap(int *a, int *b)
+{
     int temp = *a;
     *a = *b;
     *b = temp;
@@ -55,11 +55,13 @@ void quickSort(int arr[], int start, int end)
 {
     if (start < end)
     {
-        int pivotIndex = start; 
+        int pivotIndex = start;
         int pivotValue = arr[end];
 
-        for (i = start; i < end; i++) {
-            if (arr[i] < pivotValue) {
+        for (i = start; i < end; i++)
+        {
+            if (arr[i] < pivotValue)
+            {
                 swap(&arr[i], &arr[pivotIndex]);
                 pivotIndex++;
             }
@@ -81,49 +83,30 @@ void printArray(int arr[], int n)
 
 int main()
 {
-    int i, n, opt;
-
+    int n;
     printf("Enter the size of array: ");
     scanf("%d", &n);
 
-    int arr[n], original[n];
+    int arr[n], copy[n];
 
     printf("Enter array elements:\n");
     for (i = 0; i < n; i++)
     {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
-        original[i] = arr[i];
+        copy[i] = arr[i];
     }
 
     printf("Original array: ");
-    printArray(original, n);
+    printArray(arr, n);
 
-    while (1)
-    {
-        printf("\nSelect operation from menu\n");
-        printf("MENU : l.Merge sort,  2.Quick sort,  3.Exit\n");
-        scanf("%d", &opt);
-        for (i = 0; i < n; i++)
-            arr[i] = original[i];
-        switch (opt)
-        {
-        case 1:
-            mergeSort(arr, 0, n - 1);
-            break;
-        case 2:
-            quickSort(arr, 0, n - 1);
-            break;
-        case 3:
-            printf("Program exited.\n");
-            exit(0);
-        default:
-            printf("Invalid choice!!!\n");
-            continue;
-        }
-        printf("Sorted array: ");
-        printArray(arr, n);
-    }
+    printf("Sorted array using merge sort: ");
+    mergeSort(arr, 0, n - 1);
+    printArray(arr, n);
+
+    printf("Sorted array using quick sort: ");
+    quickSort(copy, 0, n - 1);
+    printArray(copy, n);
 
     return 0;
 }
