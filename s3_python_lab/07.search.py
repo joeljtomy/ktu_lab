@@ -1,8 +1,6 @@
 # 7.  Search an element in a list.
 
-user_list = input("Enter a list of numbers (comma-separated): ").strip(',').split(',')
-list = [item for item in user_list]
-
+list = input("Enter a list of numbers (comma-separated): ").strip(',').split(',')
 key = input("Enter a search key: ")
 
 if key in list :
