@@ -4,7 +4,7 @@
 
 int main()
 {
-    int i, j, n, key, found = 0, index;
+    int i, n, key, found = 0, index, lowest;
 
     printf("Enter the size of array: ");
     scanf("%d", &n);
@@ -16,16 +16,22 @@ int main()
     {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
+        if (i == 0) {
+            lowest = arr[i];
+        } else if (arr[i] < lowest) {
+            printf("Please enter sorted array.");
+            return;
+        }
     }
 
     printf("Enter the element to search: ");
     scanf("%d", &key);
 
-    int low = 0, high = n - 1;
+    int low = 0, high = n - 1, mid;
 
     while (low <= high)
     {
-        int mid = (low + high) / 2;
+        mid = (low + high) / 2;
 
         if (arr[mid] == key)
         {
@@ -52,8 +58,8 @@ Step 1: Start
 Step 2: Declare variables n, key, found and index.
 Step 3: Read n from the user.
 Step 4: Declare array arr with size n.
-Step 5: Read elements of arr from the user.
-Step 6: Sort the array arr to perform binary sort.
+Step 5: Read elements of sorted array from the user.
+Step 6: Check if array sorted else return.
 Step 7: Read key from the user.
 Step 8: Declare variables low = 0, mid = n-1/2 and high = n-1.
 Step 9: Repeat the steps until break

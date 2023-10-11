@@ -4,7 +4,7 @@
 
 int main()
 {
-    int n, key, found = 0, index;
+    int i, n, key, found = 0, index;
 
     printf("Enter the size of array: ");
     scanf("%d", &n);
@@ -12,7 +12,7 @@ int main()
     int arr[n];
 
     printf("Enter array elements:\n");
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
@@ -21,7 +21,7 @@ int main()
     printf("Enter the element to search: ");
     scanf("%d", &key);
 
-    for (int i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
         if (arr[i] == key)
         {
