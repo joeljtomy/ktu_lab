@@ -17,4 +17,4 @@ else :
 #        print("Search key found in the list.")
 # 5. Else :
 #        print("Search key is not in the list!")
-# 7. Stop
+# 6. Stop

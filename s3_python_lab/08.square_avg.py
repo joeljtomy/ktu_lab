@@ -15,5 +15,5 @@ print("Average = " + str(sum(list) / len(list)))
 # 2. Prompt the user to enter a list and store it in a variable.
 # 3. for i in list:
 #        print("Square of "+ str(i) +" = " + str(i * i))
-# 5. print("Average = " + str(sum(list) / len(list)))
-# 7. Stop
+# 4. print("Average = " + str(sum(list) / len(list)))
+# 5. Stop
