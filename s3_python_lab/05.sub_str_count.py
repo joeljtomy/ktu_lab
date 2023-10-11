@@ -5,8 +5,7 @@ sub_str = input("Enter the substring to count: ")
 
 count = string.count(sub_str)
 
-print("Total {count} occurrences of '{sub_str}'".format(
-    count=count, sub_str=sub_str))
+print("Total "+ str(count) +" occurrences of '"+ sub_str)
 
 
 # Algorithm
