@@ -38,7 +38,7 @@ display_matrix(result)
 # 3. define function to print a matrix.
 # 4. recieve rows and coloumns of matrices.
 # 5. recieve matrix1 and matrix2 using input_matrix function.
-# 6. define result = []
+# 6. Declare result = []
 # 7. Start loop for i in range(rows):
 # 7.1. row = []
 # 7.2. Start loop for j in range(cols):
