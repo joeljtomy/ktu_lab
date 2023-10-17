@@ -2,10 +2,9 @@
 #    Display the contents of the dictionary in alphabetical order of their names.
 
 phonebook = {}
-
 n = int(input("Enter the number of persons: "))
-
 i = 1
+
 while (i <= n):
     name = input(f"Enter the name for person {i}: ")
     if name in phonebook.keys():
@@ -21,12 +20,16 @@ for name in sorted(phonebook.keys()):
 
 # Algorithm
 # 1. Start
-# 2. Declare phonebook = {}.
+# 2. Declare phonebook = {}, i = 1.
 # 3. Recive the number of entries as 'n'.
-# 4. Start loop for i in range(n):
-# 4.1. name = input(f"Enter the name for person {i+1}: ")
-# 4.2. phone = input(f"Enter the phone number for {name}: ")
-# 4.3. phonebook[name] = phone
-# 5. for name in sorted(phonebook.keys()):
-# 5.1. print(f"{name}: {phonebook[name]}")
-# 6. Stop
+# 4. Start loop while (i <= n):
+# 5. Recieve name.
+# 6. If name in phonebook.keys():
+#      print("name already exists!")
+# 7  Else:
+#      phone = input(f"Enter the phone number for {name}: ")
+#      phonebook[name] = phone
+#      i = i + 1
+# 8. Start loop for name in sorted(phonebook.keys()):
+#      print(f"{name}: {phonebook[name]}")
+# 9. Stop
