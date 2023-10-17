@@ -1,4 +1,4 @@
-#9.  Add two matrices.
+# 9.  Add two matrices.
 
 def input_matrix(rows, cols):
     matrix = []
@@ -9,9 +9,11 @@ def input_matrix(rows, cols):
         matrix.append(row)
     return matrix
 
+
 def display_matrix(matrix):
     for row in matrix:
         print(row)
+
 
 rows = int(input("Enter the number of rows for the matrices: "))
 cols = int(input("Enter the number of columns for the matrices: "))
