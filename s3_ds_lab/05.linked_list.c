@@ -107,7 +107,7 @@ void deleteNode(int choice) {
 void search(int data) {
     Node *ptr = head;
     int position = 1;
-    
+
     while (ptr != NULL && ptr->data != data) {
         ptr = ptr->link;
         position++;
@@ -127,7 +127,7 @@ void traverse() {
     printf("Linked list elements: [");
     while (ptr != NULL) {
         printf("%d", ptr->data);
-        if (ptr->link != NULL) printf(" => ");
+        if (ptr->link != NULL) printf(" > ");
         else printf("]");
         ptr = ptr->link;
     }
