@@ -4,57 +4,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node
-{
+typedef struct Node {
     int data;
     struct Node *link;
 } Node;
 
 Node *head = NULL;
 
-void terminate(char msg[], int status)
-{
+void terminate(char msg[], int status) {
     printf(msg);
     exit(status);
 }
 
-void input(char msg[], int *location)
-{
+void input(char msg[], int *location) {
     printf(msg);
     scanf("%d", location);
 }
 
-void insertNode(int choice)
-{
+void insertNode(int choice) {
     Node *newNode = (Node *)malloc(sizeof(Node));
-    if (newNode == NULL)
-    {
+    if (newNode == NULL) {
         terminate("Memory allocation failed. Exiting.\n", EXIT_FAILURE);
     }
 
     input("Enter data for the new node: ", &newNode->data);
     newNode->link = NULL;
 
-    if (head == NULL)
-    {
+    if (head == NULL) {
         head = newNode;
     }
-    else
-    {
+    else {
         Node *ptr = head;
-        if (choice == 1)
-        {
+        if (choice == 1) {
             newNode->link = head;
             head = newNode;
         }
-        else if (choice == 2)
-        {
+        else if (choice == 2) {
             while (ptr->link != NULL)
                 ptr = ptr->link;
             ptr->link = newNode;
         }
-        else if (choice == 3)
-        {
+        else if (choice == 3) {
             int key;
             input("Enter data of the node after which you want to insert: ", &key);
 
@@ -65,28 +55,22 @@ void insertNode(int choice)
             ptr->link = newNode;
         }
     }
-
     printf("Node inserted successfully.\n");
 }
 
-void deleteNode(int choice)
-{
-    if (head == NULL)
-    {
+void deleteNode(int choice) {
+    if (head == NULL) {
         printf("The list is empty. Cannot delete.\n");
         return;
     }
 
     Node *ptr = head;
 
-    if (choice == 1)
-    {
+    if (choice == 1) {
         head = head->link;
     }
-    else if (choice == 2)
-    {
-        if (head->link == NULL)
-        {
+    else if (choice == 2) {
+        if (head->link == NULL) {
             free(head);
             head = NULL;
             return;
@@ -98,21 +82,18 @@ void deleteNode(int choice)
         free(ptr->link);
         ptr->link = NULL;
     }
-    else if (choice == 3)
-    {
+    else if (choice == 3) {
         int key;
         input("Enter data of the node to delete: ", &key);
 
         Node *prev = NULL;
 
-        while (ptr != NULL && ptr->data != key)
-        {
+        while (ptr != NULL && ptr->data != key) {
             prev = ptr;
             ptr = ptr->link;
         }
 
-        if (ptr == NULL)
-        {
+        if (ptr == NULL) {
             printf("Node with the given data not found.\n");
             return;
         }
@@ -120,62 +101,50 @@ void deleteNode(int choice)
         prev->link = ptr->link;
         free(ptr);
     }
-
     printf("Node deleted successfully.\n");
 }
 
-void search(int data)
-{
+void search(int data) {
     Node *ptr = head;
     int position = 1;
-    while (ptr != NULL && ptr->data != data)
-    {
+    
+    while (ptr != NULL && ptr->data != data) {
         ptr = ptr->link;
         position++;
     }
 
-    if (ptr == NULL)
-        printf("Node with the given data not found.\n");
-    else
-        printf("Node with data %d found at position %d.\n", data, position);
+    if (ptr == NULL) printf("Node with the given data not found.\n");
+    else printf("Node with data %d found at position %d.\n", data, position);
 }
 
-void traverse()
-{
-    if (head == NULL)
-    {
+void traverse() {
+    if (head == NULL) {
         printf("The list is empty.\n");
         return;
     }
 
     Node *ptr = head;
     printf("Linked list elements: [");
-    while (ptr != NULL)
-    {
+    while (ptr != NULL) {
         printf("%d", ptr->data);
-        if (ptr->link != NULL)
-            printf(" => ");
-        else
-            printf("]");
+        if (ptr->link != NULL) printf(" => ");
+        else printf("]");
         ptr = ptr->link;
     }
     printf("\n");
 }
 
-int main()
-{
+int main() {
     int choice, data;
 
-    do
-    {
+    do {
         printf("\nMenu:\n");
         printf("| Insertion: 1. At the beginning | 2. At the end | 3. After a node |\n");
         printf("| Deletion: 4. At the beginning | 5. At the end | 6. a specific node |\n");
         printf("| 7. Search for a node | 8. Traverse the list | 9. Exit |\n");
         input("Enter your choice: ", &choice);
 
-        switch (choice)
-        {
+        switch (choice) {
         case 1:
         case 2:
         case 3:
