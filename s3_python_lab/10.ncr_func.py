@@ -5,12 +5,14 @@ def factorial(num):
         return num * factorial(num - 1)
     return 1
 
+def nCr(n, r) :
+    return factorial(n)/(factorial(r)*factorial(n-r))
+
 n = int(input("Enter the value of n: "))
 r = int(input("Enter the value of r: "))
 
 if n >= 0 and r >= 0 and n >= r :
-    nCr = factorial(n)/(factorial(r)*factorial(n-r))
-    print(f"{n}C{r} = {nCr}")
+    print(f"{n}C{r} = {nCr(n, r)}")
 else :
     print("n and r should be non negative and n >= r")
 
