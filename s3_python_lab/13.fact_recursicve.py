@@ -18,4 +18,4 @@ print("factorial of {num} = {factorial(num)}")
 # 2.3. return 1
 # 4. Recieve a number
 # 5. print the factorial of the number, factorial(num)
-# 9. Stop
+# 6. Stop
