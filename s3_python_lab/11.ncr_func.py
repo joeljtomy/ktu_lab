@@ -1,19 +1,21 @@
 # 11. Find the value of nCr using a function.
 
 def factorial(num):
-    if num > 0 :
+    if num > 0:
         return num * factorial(num - 1)
     return 1
 
-def nCr(n, r) :
+
+def nCr(n, r):
     return factorial(n)/(factorial(r)*factorial(n-r))
+
 
 n = int(input("Enter the value of n: "))
 r = int(input("Enter the value of r: "))
 
-if n >= 0 and r >= 0 and n >= r :
+if n >= 0 and r >= 0 and n >= r:
     print(f"{n}C{r} = {nCr(n, r)}")
-else :
+else:
     print("n and r should be non negative and n >= r")
 
 # Algorithm
@@ -22,11 +24,13 @@ else :
 # 2.1. if num > 0 :
 # 2.2.    return num * factorial(num - 1)
 # 2.3. return 1
-# 3. Recive thw value for n.
-# 4. Recive thw value for r.
-# 5. If n >= 0 and r >= 0 and n >= r :
-#      nCr = factorial(n)/(factorial(r)*factorial(n-r))
+# 3. Define function to calculate nCr.
+# 3.1. return factorial(n)/(factorial(r)*factorial(n-r))
+# 4. Recive the value for n.
+# 5. Recive the value for r.
+# 6. If n >= 0 and r >= 0 and n >= r :
+#      nCr = nCr(n, r)
 #      print(f"{n}C{r} = {nCr}")
-# 6. Else:
+# 7. Else:
 #      print("n and r should be non negative and n >= r")
-# 7. Stop
+# 8. Stop

@@ -12,7 +12,9 @@ def input_matrix(rows, cols):
 
 def display_matrix(matrix):
     for row in matrix:
-        print(row)
+        for element in row:
+            print(element, end='  ')
+        print()
 
 
 rows = int(input("Enter the number of rows for the matrices: "))
@@ -23,6 +25,11 @@ matrix1 = input_matrix(rows, cols)
 
 print("Enter the second matrix:")
 matrix2 = input_matrix(rows, cols)
+
+print("First matrix:")
+display_matrix(matrix1)
+print("Second matrix:")
+display_matrix(matrix2)
 
 result = []
 for i in range(rows):
@@ -40,10 +47,12 @@ display_matrix(result)
 # 3. define function to print a matrix.
 # 4. recieve rows and coloumns of matrices.
 # 5. recieve matrix1 and matrix2 using input_matrix function.
-# 6. Declare result = []
-# 7. Start loop for i in range(rows):
-# 7.1. row = []
-# 7.2. Start loop for j in range(cols):
-# 7.3.1. row.append(matrix1[i][j] + matrix2[i][j])
-# 7.4. result.append(row)
-# 7. Stop
+# 6. Display matrix1 and matrix2 using display_matrix function.
+# 7. Declare result = []
+# 8. Start loop for i in range(rows):
+# 8.1. row = []
+# 8.2. Start loop for j in range(cols):
+# 8.3.1. row.append(matrix1[i][j] + matrix2[i][j])
+# 8.4. result.append(row)
+# 9. Display result.
+# 10. Stop
