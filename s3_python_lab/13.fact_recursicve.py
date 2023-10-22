@@ -7,7 +7,10 @@ def factorial(num):
 
 
 num = int(input("Enter the number: "))
-print("factorial of {num} = {factorial(num)}")
+if num < 0 :
+    print("number should be non-negative.")
+else :
+    print("factorial of {num} = {factorial(num)}")
 
 
 # Algorithm

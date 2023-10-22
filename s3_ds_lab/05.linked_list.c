@@ -21,7 +21,7 @@ void input(char msg[], int *location) {
     scanf("%d", location);
 }
 
-void insertNode(int choice) {
+void insertNode(int position) {
     Node *newNode = (Node *)malloc(sizeof(Node));
     if (newNode == NULL) {
         terminate("Memory allocation failed. Exiting.\n", EXIT_FAILURE);
@@ -35,16 +35,16 @@ void insertNode(int choice) {
     }
     else {
         Node *ptr = head;
-        if (choice == 1) {
+        if (position == 1) {
             newNode->link = head;
             head = newNode;
         }
-        else if (choice == 2) {
+        else if (position == 2) {
             while (ptr->link != NULL)
                 ptr = ptr->link;
             ptr->link = newNode;
         }
-        else if (choice == 3) {
+        else if (position == 3) {
             int key;
             input("Enter data of the node after which you want to insert: ", &key);
 
@@ -58,7 +58,7 @@ void insertNode(int choice) {
     printf("Node inserted successfully.\n");
 }
 
-void deleteNode(int choice) {
+void deleteNode(int position) {
     if (head == NULL) {
         printf("The list is empty. Cannot delete.\n");
         return;
@@ -66,10 +66,10 @@ void deleteNode(int choice) {
 
     Node *ptr = head;
 
-    if (choice == 1) {
+    if (position == 1) {
         head = head->link;
     }
-    else if (choice == 2) {
+    else if (position == 2) {
         if (head->link == NULL) {
             free(head);
             head = NULL;
@@ -82,7 +82,7 @@ void deleteNode(int choice) {
         free(ptr->link);
         ptr->link = NULL;
     }
-    else if (choice == 3) {
+    else if (position == 3) {
         int key;
         input("Enter data of the node to delete: ", &key);
 
@@ -138,10 +138,10 @@ int main() {
     int choice, data;
 
     do {
-        printf("\nMenu:\n");
-        printf("| Insertion: 1. At the beginning | 2. At the end | 3. After a node |\n");
-        printf("| Deletion: 4. At the beginning | 5. At the end | 6. a specific node |\n");
-        printf("| 7. Search for a node | 8. Traverse the list | 9. Exit |\n");
+        printf("\nLinked list  operations Menu:\n");
+        printf("Insertion:\n  1. At the beginning\n  2. At the end\n  3. After a node\n");
+        printf("Deletion:\n  4. At the beginning\n  5. At the end\n  6. A specific node\n");
+        printf("7. Search for a node\n8. Traverse the list\n9. Exit\n");
         input("Enter your choice: ", &choice);
 
         switch (choice) {
