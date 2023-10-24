@@ -113,36 +113,23 @@ int main()
 
 /*Algorithm
 Step 1: Start
-Step 2: Declare variables n, opt.
-Step 3: Read the size of the array n from the user.
-Step 4: Declare arrays arr[n].
-Step 5: Read array elements into arr[].
-Step 6: Repeat the steps 7 to 11 in loop
-Step 7: Display the menu for sorting options:
-         Merge Sort (1)
-         Quick Sort (2)
-         Exit (3)
-     7.2: Read the user's choice into opt.
-Step 8: If opt is 1:
-     8.1 Perform the Merge Sort algorithm:
-      - If the array has only one or zero elements, it is already sorted.
+Step 2: Read the size of the array n from the user.
+Step 3: Declare arrays arr[n] and copy[n].
+Step 4: Read array elements into arr[] and copy it to copy[].
+Step 5: Perform the Merge Sort algorithm:
+       - If the array has only one or zero elements, it is already sorted.
+       - If the array has more than one element:
+         - Divide the array into two roughly equal halves.
+         - Recursively apply Merge Sort to each half.
+         - Merge the sorted halves back into one sorted array.
+Step 6: Print the sorted array.
+Step 7: Perform the Quick Sort algorithm:
+       - If the array has one or zero elements, it is already considered sorted.
       - If the array has more than one element:
-            - Divide the array into two roughly equal halves.
-            - Recursively apply Merge Sort to each half.
-            - Merge the sorted halves back into one sorted array.
-     8.2 Print the sorted array.
-Step 9: Else if opt is 2:
-     9.1 Perform the Quick Sort algorithm:
-      - If the array has one or zero elements, it is already considered sorted.
-      - If the array has more than one element:
-            - Choose a 'pivot' element from the array.
-            - Partition the array such that elements smaller than the pivot are on the left,
-              and larger ones are on the right.
-            - Recursively apply Quick Sort to the subarrays on the left and right of the pivot.
-     9.2 Print the sorted array.
-Step 10: Else if opt is 3:
-     10.1 Exit the loop.
-Step 11: Else:
-     11.1 Print "Invalid choice!!!"
-Step 12: Stop
+         - Choose a 'pivot' element from the array.
+         - Partition the array such that elements smaller than the pivot are on the left,
+           and larger ones are on the right.
+         - Recursively apply Quick Sort to the subarrays on the left and right of the pivot.
+Step 8: Print the sorted array.
+Step 9: Stop
 */
