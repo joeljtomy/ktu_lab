@@ -116,20 +116,20 @@ Step 1: Start
 Step 2: Read the size of the array n from the user.
 Step 3: Declare arrays arr[n] and copy[n].
 Step 4: Read array elements into arr[] and copy it to copy[].
-Step 5: Perform the Merge Sort algorithm:
+Step 5: Perform the Merge Sort algorithm on arr[] array:
        - If the array has only one or zero elements, it is already sorted.
        - If the array has more than one element:
          - Divide the array into two roughly equal halves.
          - Recursively apply Merge Sort to each half.
          - Merge the sorted halves back into one sorted array.
-Step 6: Print the sorted array.
-Step 7: Perform the Quick Sort algorithm:
+Step 6: Print the sorted arr[] array.
+Step 7: Perform the Quick Sort algorithm on copy[] array:
        - If the array has one or zero elements, it is already considered sorted.
       - If the array has more than one element:
          - Choose a 'pivot' element from the array.
          - Partition the array such that elements smaller than the pivot are on the left,
            and larger ones are on the right.
          - Recursively apply Quick Sort to the subarrays on the left and right of the pivot.
-Step 8: Print the sorted array.
+Step 8: Print the sorted copy[] array.
 Step 9: Stop
 */
