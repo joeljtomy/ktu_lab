@@ -172,7 +172,7 @@ int main() {
     return 0;
 }
 
-/*
+/*Algorithm
 Step 1: Start.
 Step 2: Node Structure:
         Define a structure Node to represent each node in the linked list.
