@@ -81,13 +81,26 @@ int main() {
     struct Term* poly1 = NULL;
     struct Term* poly2 = NULL;
 
-    insertTerm(&poly1, 4, 3);
-    insertTerm(&poly1, 3, 2);
-    insertTerm(&poly1, 5, 1);
+    int coef, exp;
+    int numTerms;
 
-    insertTerm(&poly2, 3, 2);
-    insertTerm(&poly2, 2, 1);
-    insertTerm(&poly2, 1, 0);
+    printf("Enter the number of terms for Polynomial 1: ");
+    scanf("%d", &numTerms);
+
+    for (int i = 0; i < numTerms; i++) {
+        printf("Enter coefficient and exponent for term %d: ", i + 1);
+        scanf("%d %d", &coef, &exp);
+        insertTerm(&poly1, coef, exp);
+    }
+
+    printf("Enter the number of terms for Polynomial 2: ");
+    scanf("%d", &numTerms);
+
+    for (int i = 0; i < numTerms; i++) {
+        printf("Enter coefficient and exponent for term %d: ", i + 1);
+        scanf("%d %d", &coef, &exp);
+        insertTerm(&poly2, coef, exp);
+    }
 
     printf("Polynomial 1: ");
     displayPolynomial(poly1);
@@ -101,6 +114,7 @@ int main() {
 
     return 0;
 }
+
 
 
 /*Algorithm
