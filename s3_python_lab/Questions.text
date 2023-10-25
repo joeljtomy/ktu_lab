@@ -15,18 +15,18 @@
 11. Find the value of nCr using a function.
 12. Implement a calculator with functions like add, subtract, multiply, divide, exponent etc.
 13. Find the factorial of a given number using recursion.
-14. Find nth Fibonacci number using recursion. 
+14. Find nth Fibonacci number using recursion.
 15. Develop a Python program to implement the following scenario. A bookshop’s details
     contain the title of the book and Number of copies of each title. As books are added
     to shop the number of copies in each should increase and as books are sold the number
     of copies in each should decrease.
 16. Develop a python code to read a text file, copy the contents to another file after
-    removing the blank lines. 
+    removing the blank lines.
 17. Develop a python program to implement the following scenario. Given a file “data.txt”
-    with three columns of data separated by spaces. Read it into 3 separate simple sequences. 
+    with three columns of data separated by spaces. Read it into 3 separate simple sequences.
 18. Create a class student with attributes name, roll number and a method showData() for
     showing the details. Create two instances of the class and call the method for each instance.
-    Develop a python program to implement the scenario. 
+    Develop a python program to implement the scenario.
 
 
 
