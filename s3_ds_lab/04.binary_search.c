@@ -63,18 +63,15 @@ Step 6: Check if array sorted else return.
 Step 7: Read key from the user.
 Step 8: Declare variables low = 0, mid = n-1/2 and high = n-1.
 Step 9: Repeat the steps until break
-     9.1 If arr[mid] == key
-            found = 1
-            index = mid
-            break
-     9.2 Else if low == mid-1
-            break
-     9.3 Else if arr[mid] < key
-            low = mid
-            mid = mid + ((high - mid) / 2)
-     9.4 Else if arr[mid] > key
-            high = mid
-            mid = low + ((high - low) / 2)
+     9.1 mid = (low + high) / 2;
+     9.2 if (arr[mid] == key)
+            found = 1;
+            index = mid;
+            break;
+     9.3 if (arr[mid] < key)
+            low = mid + 1;
+     9.4 else
+            high = mid - 1;
 Step 10: If found
            Display Element found at index
         else
