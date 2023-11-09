@@ -1,20 +1,21 @@
 # 16. Develop a python code to read a text file, copy the contents to another file after
 #     removing the blank lines.
 
-file1 = open("file1.txt","w")
-content = input("file 1 created write to file: ")
-file1.write(content)
-file1.close()
+with open("file_in.txt", "r") as file_in:
+    content = file_in.read()
 
-file2 = open("file2.txt","a")
-file1 = open("file1.txt","r")
-content = file1.read()
-for line in content :
-    if line != "\n" :
-       file2.write(line)
+print("file content:")
+print(content)
 
-file2 = open("file2.txt","r")
-print("content copied to 2nd file:", file2.read())
+with open("file_out.txt", "w") as file_out:
+    for line in content.split("\n"):
+        if line.strip() != "":
+            file_out.write(line+"\n")
+
+with open("file_out.txt", "r") as file_out:
+    print("file content after:")
+    print(file_out.read())
+
 
 # Algorithm
 # 1. Start
