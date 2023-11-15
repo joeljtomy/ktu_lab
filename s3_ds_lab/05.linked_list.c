@@ -11,42 +11,32 @@ typedef struct Node {
 
 Node *head = NULL;
 
-void terminate(char msg[], int status) {
-    printf(msg);
-    exit(status);
-}
-
-void input(char msg[], int *location) {
-    printf(msg);
-    scanf("%d", location);
-}
-
 void insertNode(int position) {
     Node *newNode = (Node *)malloc(sizeof(Node));
     if (newNode == NULL) {
-        terminate("Memory allocation failed. Exiting.\n", EXIT_FAILURE);
+        printf("Memory allocation failed. Exiting.\n");
+        exit(EXIT_FAILURE);
     }
 
-    input("Enter data for the new node: ", &newNode->data);
+    printf("Enter data for the new node: ");
+    scanf("%d", &newNode->data);
     newNode->link = NULL;
 
     if (head == NULL) {
         head = newNode;
-    }
-    else {
+    } else {
         Node *ptr = head;
         if (position == 1) {
             newNode->link = head;
             head = newNode;
-        }
-        else if (position == 2) {
+        } else if (position == 2) {
             while (ptr->link != NULL)
                 ptr = ptr->link;
             ptr->link = newNode;
-        }
-        else if (position == 3) {
+        } else if (position == 3) {
             int key;
-            input("Enter data of the node after which you want to insert: ", &key);
+            printf("Enter data of the node after which you want to insert: ");
+            scanf("%d", &key);
 
             while (ptr != NULL && ptr->data != key)
                 ptr = ptr->link;
@@ -68,8 +58,7 @@ void deleteNode(int position) {
 
     if (position == 1) {
         head = head->link;
-    }
-    else if (position == 2) {
+    } else if (position == 2) {
         if (head->link == NULL) {
             free(head);
             head = NULL;
@@ -81,10 +70,10 @@ void deleteNode(int position) {
 
         free(ptr->link);
         ptr->link = NULL;
-    }
-    else if (position == 3) {
+    } else if (position == 3) {
         int key;
-        input("Enter data of the node to delete: ", &key);
+        printf("Enter data of the node to delete: ");
+        scanf("%d", &key);
 
         Node *prev = NULL;
 
@@ -142,35 +131,40 @@ int main() {
         printf("Insertion:\n  1. At the beginning\n  2. At the end\n  3. After a node\n");
         printf("Deletion:\n  4. At the beginning\n  5. At the end\n  6. A specific node\n");
         printf("7. Search for a node\n8. Traverse the list\n9. Exit\n");
-        input("Enter your choice: ", &choice);
+
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
         switch (choice) {
-        case 1:
-        case 2:
-        case 3:
-            insertNode(choice);
-            break;
-        case 4:
-        case 5:
-        case 6:
-            deleteNode(choice - 3);
-            break;
-        case 7:
-            input("Enter data to search: ", &data);
-            search(data);
-            break;
-        case 8:
-            traverse();
-            break;
-        case 9:
-            terminate("Exiting the program. Goodbye!\n", EXIT_SUCCESS);
-        default:
-            printf("Invalid choice. Please try again.\n");
+            case 1:
+            case 2:
+            case 3:
+                insertNode(choice);
+                break;
+            case 4:
+            case 5:
+            case 6:
+                deleteNode(choice - 3);
+                break;
+            case 7:
+                printf("Enter data to search: ");
+                scanf("%d", &data);
+                search(data);
+                break;
+            case 8:
+                traverse();
+                break;
+            case 9:
+                printf("Exiting the program. Goodbye!\n");
+                exit(EXIT_SUCCESS);
+            default:
+                printf("Invalid choice. Please try again.\n");
         }
     } while (1);
 
     return 0;
 }
+
 
 /*Algorithm
 Step 1: Start.
