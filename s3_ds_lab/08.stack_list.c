@@ -1,4 +1,5 @@
-#include <stdio.h>
+//8.  Develop a program to perform stack operations using linked list. #include <stdio.h>
+
 #include <stdlib.h>
 
 typedef struct Node {
@@ -85,3 +86,9 @@ int main() {
     }
     return 0;
 }
+
+
+/*Algorithm
+Step 1: Start.
+
+*/

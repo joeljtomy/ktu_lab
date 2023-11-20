@@ -1,3 +1,5 @@
+//10. Perform queue operations using linked list.
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -84,3 +86,9 @@ int main() {
     }
     return 0;
 }
+
+
+/*Algorithm
+Step 1: Start.
+
+*/
