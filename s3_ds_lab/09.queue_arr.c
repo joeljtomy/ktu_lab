@@ -12,19 +12,15 @@ int isFull() {
 }
 
 void printQueue(int queue[]) {
-	if (front == -1) {
+	if (isEmpty()) {
 		printf("Queue empty.");
 		return;
 	}
 	int i;
-	printf("[");
+	printf("Queue: ");
 	for (i = front; i < rear + 1; i++) {
-		if (i == rear)
-			printf("%d", queue[i]);
-		else
-			printf("%d, ", queue[i]);
+		printf("%d, ", queue[i]);
 	}
-	printf("]");
 }
 
 int main() {

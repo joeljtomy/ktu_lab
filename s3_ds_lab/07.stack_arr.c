@@ -5,11 +5,10 @@
 
 void printArray(int arr[], int n) {
 	int i;
-	printf("[");
+	printf("Stack: ");
     for (i = 0; i < n; i++) {
         printf("%d, ", arr[i]);
     }
-    printf("]");
 }
 
 int main() {
