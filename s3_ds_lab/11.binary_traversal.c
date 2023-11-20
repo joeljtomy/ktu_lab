@@ -3,64 +3,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node
-{
+typedef struct Node {
     int data;
     struct Node *left;
     struct Node *right;
 } Node;
 
-void inorderTraversal(Node *root)
-{
-    if (root == NULL)
-        return;
+void inorderTraversal(Node *root) {
+    if (root == NULL) return;
     inorderTraversal(root->left);
     printf("%d, ", root->data);
     inorderTraversal(root->right);
 }
 
-void preorderTraversal(Node *root)
-{
-    if (root == NULL)
-        return;
+void preorderTraversal(Node *root) {
+    if (root == NULL) return;
     printf("%d, ", root->data);
     preorderTraversal(root->left);
     preorderTraversal(root->right);
 }
 
-void postorderTraversal(Node *root)
-{
-    if (root == NULL)
-        return;
+void postorderTraversal(Node *root) {
+    if (root == NULL) return;
     postorderTraversal(root->left);
     postorderTraversal(root->right);
     printf("%d, ", root->data);
 }
 
-Node *createNode(int data)
-{
+Node *createNode(int data) {
     Node *newNode = malloc(sizeof(Node));
     newNode->data = data;
     newNode->left = NULL;
     newNode->right = NULL;
-
     return newNode;
 }
 
-Node *insertLeft(Node *root, int data)
-{
+Node *insertLeft(Node *root, int data) {
     root->left = createNode(data);
     return root->left;
 }
 
-Node *insertRight(Node *root, int data)
-{
+Node *insertRight(Node *root, int data) {
     root->right = createNode(data);
     return root->right;
 }
 
-int main()
-{
+int main() {
     int data;
     printf("Enter the data of root node: ");
     scanf("%d", &data);
