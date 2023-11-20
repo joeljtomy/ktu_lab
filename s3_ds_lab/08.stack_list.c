@@ -4,7 +4,7 @@
 
 typedef struct Node {
     int data;
-    struct Node *next;
+    struct Node *link;
 } Node;
 
 Node *stack = NULL;
@@ -19,14 +19,14 @@ void push() {
 	    exit(1);
     }
     newNode->data = data;
-    newNode->next = NULL;
-    newNode->next = stack;
+    newNode->link = NULL;
+    newNode->link = stack;
     stack = newNode;
     printf("Node inserted successfully\n");
 }
 
 void pop() {
-	stack = stack->next;
+	stack = stack->link;
 	printf("Node Deleted successfully\n");
 }
 
@@ -38,9 +38,9 @@ void showStack() {
     }
     printf("Stack: ");
     while (current != NULL) {
-        if (current->next == NULL) printf("%d", current->data);
+        if (current->link == NULL) printf("%d", current->data);
 		else printf("%d > ", current->data);
-        current = current->next;
+        current = current->link;
     }
 }
 

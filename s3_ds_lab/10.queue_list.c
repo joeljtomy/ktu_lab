@@ -5,7 +5,7 @@
 
 typedef struct Node {
     int data;
-    struct Node *next;
+    struct Node *link;
 } Node;
 
 Node *queue = NULL;
@@ -21,21 +21,21 @@ void enqueue() {
 	    exit(1);
     }
     newNode->data = data;
-    newNode->next = NULL;
+    newNode->link = NULL;
     if (queue == NULL) {
     	queue = newNode;
 	} else {
 		Node *ptr = queue;
-        while (ptr->next != NULL) {
-            ptr = ptr->next;
+        while (ptr->link != NULL) {
+            ptr = ptr->link;
         }
-    ptr->next = newNode;
+    ptr->link = newNode;
     }
     printf("Node inserted successfully\n");
 }
 
 void dequeue() {
-	queue = queue->next;
+	queue = queue->link;
 	printf("Node Deleted successfully\n");
 }
 
@@ -47,9 +47,9 @@ void showQueue() {
     }
     printf("Queue: ");
     while (current != NULL) {
-        if (current->next == NULL) printf("%d", current->data);
+        if (current->link == NULL) printf("%d", current->data);
 		else printf("%d > ", current->data);
-        current = current->next;
+        current = current->link;
     }
 }
 
