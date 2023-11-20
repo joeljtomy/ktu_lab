@@ -1,3 +1,5 @@
+//9.  Perform queue operations using array.
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -84,3 +86,9 @@ int main() {
 
 	return 0;
 }
+
+
+/*Algorithm
+Step 1: Start.
+
+*/
