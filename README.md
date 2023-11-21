@@ -1,4 +1,4 @@
 # KTU Lab Work
-- KTU B tech IT Lab 
-- Code & Algorithm
-- Python, C
+- S2 C Programming
+- S3 Problem Solving Using Python
+- S3 Data Structers
