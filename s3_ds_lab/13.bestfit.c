@@ -2,111 +2,167 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
-#define MAX_SIZE 100
+// Structure to represent a block of memory
+struct MemoryBlock {
+    int id;  // Process ID
+    int size;  // Size of the block
+    struct MemoryBlock* next;  // Pointer to the next block
+};
 
-int top = -1;
-int stack[MAX_SIZE];
-
-int empty() {
-    return top == -1;
+// Function to initialize a new memory block
+struct MemoryBlock* createBlock(int id, int size) {
+    struct MemoryBlock* block = (struct MemoryBlock*)malloc(sizeof(struct MemoryBlock));
+    block->id = id;
+    block->size = size;
+    block->next = NULL;
+    return block;
 }
 
-int full() {
-    return top == MAX_SIZE - 1;
+// Function to print the memory blocks
+void printMemory(struct MemoryBlock* memory) {
+    while (memory != NULL) {
+        printf("ID: %d, Size: %d\n", memory->id, memory->size);
+        memory = memory->next;
+    }
 }
 
-void push(char item) {
-    if (!full()) stack[++top] = item;
-}
+// Function to perform First Fit memory allocation
+void firstFit(struct MemoryBlock** memory, int id, int size) {
+    struct MemoryBlock* newBlock = createBlock(id, size);
+    struct MemoryBlock* current = *memory;
 
-int pop() {
-    if (!empty()) return stack[top--];
-    else return -1;
-}
-
-int peek() {
-    if (!empty()) return stack[top];
-    else return -1;
-}
-
-int is_operator(char ch) {
-    return ch == '+' || ch == '-' || ch == '*' || ch == '/';
-}
-
-int precedence(char op) {
-    if (op == '+' || op == '-') return 1;
-    else if (op == '*' || op == '/') return 2;
-    return 0;
-}
-
-void infix_to_postfix(char infix[], char postfix[]) {
-    int i, j;
-    char ch;
-
-    for (i = j = 0; infix[i] != '\0'; i++) {
-        ch = infix[i];
-
-        if (isalnum(ch)) postfix[j++] = ch;
-        else if (ch == '(') push(ch);
-        else if (ch == ')') {
-            while (peek() != '(' && !empty()) {
-                postfix[j++] = pop();
-            }
-            pop();
-        } else if (is_operator(ch)) {
-            while (!empty() && precedence(ch) <= precedence(peek())) {
-                postfix[j++] = pop();
-            }
-            push(ch);
+    while (current != NULL) {
+        if (current->size >= size) {
+            newBlock->next = current->next;
+            current->next = newBlock;
+            return;
         }
+        current = current->next;
     }
 
-    while (!empty()) postfix[j++] = pop();
-    postfix[j] = '\0';
+    // If no suitable block is found, append to the end
+    while ((*memory)->next != NULL) {
+        *memory = (*memory)->next;
+    }
+    (*memory)->next = newBlock;
 }
 
-int postfix_evaluation(char postfix[]) {
-    int i, operand1, operand2, result;
-    char ch;
+// Function to perform Best Fit memory allocation
+void bestFit(struct MemoryBlock** memory, int id, int size) {
+    struct MemoryBlock* newBlock = createBlock(id, size);
+    struct MemoryBlock* current = *memory;
+    struct MemoryBlock* bestFitBlock = NULL;
 
-    for (i = 0; postfix[i] != '\0'; i++) {
-        ch = postfix[i];
-
-        if (isdigit(ch))  push(ch - '0');
-        else if (is_operator(ch)) {
-            operand2 = pop();
-            operand1 = pop();
-
-            switch (ch) {
-                case '+': push(operand1 + operand2); break;
-                case '-': push(operand1 - operand2); break;
-                case '*': push(operand1 * operand2); break;
-                case '/': push(operand1 / operand2); break;
-            }
+    while (current != NULL) {
+        if (current->size >= size && (bestFitBlock == NULL || current->size < bestFitBlock->size)) {
+            bestFitBlock = current;
         }
+        current = current->next;
     }
 
-    result = pop();
-    return result;
+    if (bestFitBlock != NULL) {
+        newBlock->next = bestFitBlock->next;
+        bestFitBlock->next = newBlock;
+    } else {
+        // If no suitable block is found, append to the end
+        while ((*memory)->next != NULL) {
+            *memory = (*memory)->next;
+        }
+        (*memory)->next = newBlock;
+    }
+}
+
+// Function to perform Worst Fit memory allocation
+void worstFit(struct MemoryBlock** memory, int id, int size) {
+    struct MemoryBlock* newBlock = createBlock(id, size);
+    struct MemoryBlock* current = *memory;
+    struct MemoryBlock* worstFitBlock = NULL;
+
+    while (current != NULL) {
+        if (current->size >= size && (worstFitBlock == NULL || current->size > worstFitBlock->size)) {
+            worstFitBlock = current;
+        }
+        current = current->next;
+    }
+
+    if (worstFitBlock != NULL) {
+        newBlock->next = worstFitBlock->next;
+        worstFitBlock->next = newBlock;
+    } else {
+        // If no suitable block is found, append to the end
+        while ((*memory)->next != NULL) {
+            *memory = (*memory)->next;
+        }
+        (*memory)->next = newBlock;
+    }
+}
+
+// Function to release memory occupied by a process
+void releaseMemory(struct MemoryBlock** memory, int id) {
+    struct MemoryBlock* current = *memory;
+    struct MemoryBlock* previous = NULL;
+
+    while (current != NULL && current->id != id) {
+        previous = current;
+        current = current->next;
+    }
+
+    if (current != NULL) {
+        if (previous != NULL) {
+            previous->next = current->next;
+        } else {
+            *memory = current->next;
+        }
+        free(current);
+    }
+}
+
+// Function to free the allocated memory
+void freeMemory(struct MemoryBlock** memory) {
+    struct MemoryBlock* current = *memory;
+    struct MemoryBlock* next;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+
+    *memory = NULL;
 }
 
 int main() {
-    char infix[MAX_SIZE], postfix[MAX_SIZE];
+    struct MemoryBlock* memory = createBlock(-1, 0);  // Dummy block representing the entire memory
 
-    printf("Enter infix expression: ");
-    scanf("%s", infix);
+    // Simulate memory allocation using different strategies
+    printf("First Fit:\n");
+    firstFit(&memory, 1, 20);
+    firstFit(&memory, 2, 10);
+    firstFit(&memory, 3, 15);
+    printMemory(memory);
 
-    infix_to_postfix(infix, postfix);
-    printf("\nPostfix expression: %s\n", postfix);
+    releaseMemory(&memory, 2);
 
-    int result = postfix_evaluation(postfix);
-    printf("Result after evaluation: %d\n", result);
+    printf("\nBest Fit:\n");
+    bestFit(&memory, 4, 12);
+    bestFit(&memory, 5, 18);
+    bestFit(&memory, 6, 8);
+    printMemory(memory);
+
+    releaseMemory(&memory, 4);
+
+    printf("\nWorst Fit:\n");
+    worstFit(&memory, 7, 25);
+    worstFit(&memory, 8, 10);
+    worstFit(&memory, 9, 15);
+    printMemory(memory);
+
+    // Free allocated memory
+    freeMemory(&memory);
 
     return 0;
 }
-
 
 /*Algorithm
 Step 1: Start.

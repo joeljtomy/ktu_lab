@@ -4,17 +4,17 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define MAX_SIZE 100
+#define SIZE 100
 
 int top = -1;
-int stack[MAX_SIZE];
+int stack[SIZE];
 
 int empty() {
     return top == -1;
 }
 
 int full() {
-    return top == MAX_SIZE - 1;
+    return top == SIZE - 1;
 }
 
 void push(char item) {
@@ -23,12 +23,10 @@ void push(char item) {
 
 int pop() {
     if (!empty()) return stack[top--];
-    else return -1;
 }
 
-int peek() {
+int topest() {
     if (!empty()) return stack[top];
-    else return -1;
 }
 
 int is_operator(char ch) {
@@ -51,12 +49,12 @@ void infix_to_postfix(char infix[], char postfix[]) {
         if (isalnum(ch)) postfix[j++] = ch;
         else if (ch == '(') push(ch);
         else if (ch == ')') {
-            while (peek() != '(' && !empty()) {
+            while (topest() != '(' && !empty()) {
                 postfix[j++] = pop();
             }
             pop();
         } else if (is_operator(ch)) {
-            while (!empty() && precedence(ch) <= precedence(peek())) {
+            while (!empty() && precedence(ch) <= precedence(topest())) {
                 postfix[j++] = pop();
             }
             push(ch);
@@ -93,7 +91,7 @@ int postfix_evaluation(char postfix[]) {
 }
 
 int main() {
-    char infix[MAX_SIZE], postfix[MAX_SIZE];
+    char infix[SIZE], postfix[SIZE];
 
     printf("Enter infix expression: ");
     scanf("%s", infix);
