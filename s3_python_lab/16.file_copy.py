@@ -16,7 +16,6 @@ with open("file_out.txt", "r") as file_out:
     print("file content after edit & copy:")
     print(file_out.read())
 
-
 # Algorithm
 # 1. Start
 
