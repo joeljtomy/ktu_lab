@@ -1,5 +1,6 @@
-//8.  Develop a program to perform stack operations using linked list. #include <stdio.h>
+//8.  Develop a program to perform stack operations using linked list.
 
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct Node {
