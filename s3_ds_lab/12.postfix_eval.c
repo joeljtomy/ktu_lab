@@ -1,87 +1,101 @@
-//12. Apply stack to perform Infix to postfix conversion and Postfix evaluation.
+// 12. Apply stack to perform Infix to postfix conversion and Postfix evaluation.
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 
 #define SIZE 100
-
 int top = -1;
 int stack[SIZE];
 
-int empty() {
-    return top == -1;
-}
-
-int full() {
-    return top == SIZE - 1;
-}
-
-void push(char item) {
-    if (!full()) stack[++top] = item;
+void push(int item) {
+    if (top != SIZE - 1)
+        stack[++top] = item;
 }
 
 int pop() {
-    if (!empty()) return stack[top--];
+    if (top != -1)
+        return stack[top--];
 }
 
-int topest() {
-    if (!empty()) return stack[top];
-}
-
-int is_operator(char ch) {
+int isOperator(char ch) {
     return ch == '+' || ch == '-' || ch == '*' || ch == '/';
 }
 
 int precedence(char op) {
-    if (op == '+' || op == '-') return 1;
-    else if (op == '*' || op == '/') return 2;
+    if (op == '+' || op == '-')
+        return 1;
+    else if (op == '*' || op == '/')
+        return 2;
     return 0;
 }
 
-void infix_to_postfix(char infix[], char postfix[]) {
+void infixToPostfix(char infix[], char postfix[]) {
     int i, j;
     char ch;
 
     for (i = j = 0; infix[i] != '\0'; i++) {
         ch = infix[i];
 
-        if (isalnum(ch)) postfix[j++] = ch;
+        if (isalnum(ch))
+            postfix[j++] = ch;
         else if (ch == '(') push(ch);
         else if (ch == ')') {
-            while (topest() != '(' && !empty()) {
+            while (stack[top] != '(')
                 postfix[j++] = pop();
-            }
             pop();
-        } else if (is_operator(ch)) {
-            while (!empty() && precedence(ch) <= precedence(topest())) {
+        }
+        else if (isOperator(ch)) {
+            while (top != -1 && precedence(ch) <= precedence(stack[top]))
                 postfix[j++] = pop();
-            }
             push(ch);
         }
     }
 
-    while (!empty()) postfix[j++] = pop();
+    while (top != -1)
+        postfix[j++] = pop();
     postfix[j] = '\0';
 }
 
-int postfix_evaluation(char postfix[]) {
-    int i, operand1, operand2, result;
+int postfixEvaluation(char postfix[]) {
+    int i, j, l = 0, operand1, operand2, result;
     char ch;
+    struct term {
+        char ch;
+        int value;
+    };
+    struct term variables[SIZE];
 
     for (i = 0; postfix[i] != '\0'; i++) {
         ch = postfix[i];
 
-        if (isdigit(ch))  push(ch - '0');
-        else if (is_operator(ch)) {
+        if (isalnum(ch)) {
+            if (isalpha(ch)) {
+                for (j = 0; j < l; j++) {
+                    if (variables[j].ch == ch) {
+                        push(variables[j].value);
+                        break;
+                    }
+                }
+                if (j == l) {
+                    printf("Enter value for variable %c: ", ch);
+                    scanf("%d", &variables[l].value);
+                    variables[l].ch = ch;
+                    push(variables[l++].value);
+                }
+            }
+            else
+                push(ch - '0');
+        }
+        else if (isOperator(ch)) {
             operand2 = pop();
             operand1 = pop();
 
             switch (ch) {
-                case '+': push(operand1 + operand2); break;
-                case '-': push(operand1 - operand2); break;
-                case '*': push(operand1 * operand2); break;
-                case '/': push(operand1 / operand2); break;
+            case '+': push(operand1 + operand2); break;
+            case '-': push(operand1 - operand2); break;
+            case '*': push(operand1 * operand2); break;
+            case '/': push(operand1 / operand2); break;
             }
         }
     }
@@ -93,18 +107,16 @@ int postfix_evaluation(char postfix[]) {
 int main() {
     char infix[SIZE], postfix[SIZE];
 
-    printf("Enter infix expression: ");
+    printf("Enter the infix expression: ");
     scanf("%s", infix);
-
-    infix_to_postfix(infix, postfix);
+    infixToPostfix(infix, postfix);
     printf("\nPostfix expression: %s\n", postfix);
 
-    int result = postfix_evaluation(postfix);
+    int result = postfixEvaluation(postfix);
     printf("Result after evaluation: %d\n", result);
 
     return 0;
 }
-
 
 /*Algorithm
 Step 1: Start.
