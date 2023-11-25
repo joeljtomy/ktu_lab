@@ -30,30 +30,46 @@ int precedence(char op) {
     return 0;
 }
 
+void invalid() {
+    printf("Invalid infix expression!");
+    exit(0);
+}
+
 void infixToPostfix(char infix[], char postfix[]) {
     int i, j;
-    char ch;
+    char ch, prevch, nextch;
 
     for (i = j = 0; infix[i] != '\0'; i++) {
         ch = infix[i];
+        nextch = infix[i+1];
 
-        if (isalnum(ch))
-            postfix[j++] = ch;
-        else if (ch == '(') push(ch);
-        else if (ch == ')') {
-            while (stack[top] != '(')
-                postfix[j++] = pop();
-            pop();
-        }
-        else if (isOperator(ch)) {
+        if (isalnum(ch)) {
+            if (prevch && isalnum(prevch)) invalid();
+            else postfix[j++] = ch;
+        } else if (ch == '(') {
+            if (prevch && !isOperator(prevch) && prevch != '(') invalid();
+            else push(ch);
+        } else if (ch == ')') {
+            if (nextch && !isOperator(nextch) && nextch != ')') invalid();
+            else {
+                while (top != -1 && stack[top] != '(')
+                    postfix[j++] = pop();
+                if (top == -1) invalid();
+                else pop();
+            }
+        } else if (isOperator(ch)) {
             while (top != -1 && precedence(ch) <= precedence(stack[top]))
                 postfix[j++] = pop();
             push(ch);
         }
+        prevch = ch;
     }
 
-    while (top != -1)
-        postfix[j++] = pop();
+    while (top != -1){
+        ch = pop();
+        if (ch == '(') invalid();
+        else postfix[j++] = ch;
+    }
     postfix[j] = '\0';
 }
 
