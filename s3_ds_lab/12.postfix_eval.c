@@ -14,8 +14,7 @@ void push(int item) {
 }
 
 int pop() {
-    if (top != -1)
-        return stack[top--];
+    if (top != -1) return stack[top--];
 }
 
 int isOperator(char ch) {
@@ -23,10 +22,8 @@ int isOperator(char ch) {
 }
 
 int precedence(char op) {
-    if (op == '+' || op == '-')
-        return 1;
-    else if (op == '*' || op == '/')
-        return 2;
+    if (op == '+' || op == '-') return 1;
+    else if (op == '*' || op == '/') return 2;
     return 0;
 }
 
@@ -100,8 +97,7 @@ int postfixEvaluation(char postfix[]) {
                     push(variables[l++].value);
                 }
             }
-            else
-                push(ch - '0');
+            else push(ch - '0');
         }
         else if (isOperator(ch)) {
             operand2 = pop();
