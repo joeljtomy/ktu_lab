@@ -43,17 +43,9 @@ Node *findNode(int vertex) {
 int front = -1, rear = -1;
 int queue[SIZE];
 
-int empty() {
-    return (front == -1 || front == rear + 1);
-}
-
 void enqueue(int value) {
     if (front == -1) front++;
     queue[++rear] = value;
-}
-
-int dequeue() {
-    return queue[front++];
 }
 
 void BFS(int start) {
@@ -61,8 +53,8 @@ void BFS(int start) {
 
     printf("\nBFS starting from vertex %d: ", start);
     enqueue(start);
-    while (!empty()) {
-        int item = dequeue();
+    while (!(front == -1 || front == rear + 1)) {
+        int item = queue[front++];
         visited[len++] = item;
         printf("%d ", item);
         Node *vertex = findNode(item);
@@ -89,21 +81,10 @@ void BFS(int start) {
     }
 }
 
-int top = -1;
-int stack[SIZE];
-
-void push(int value) {
-    stack[++top] = value;
-}
-
-int pop() {
-	return stack[top--];
-}
-
 void DFS(int start) {
-    int visited[SIZE], len = 0, i, found = 0;
+    int stack[SIZE], top = -1, visited[SIZE], len = 0, i, found = 0;
     printf("\nDFS starting from vertex %d: ", start);
-    push(start);
+    stack[++top] = start;
     printf("%d ", start);
     visited[len++] = start;
     while (top != -1) { 
@@ -126,14 +107,14 @@ void DFS(int start) {
                 }
             }
             if (!found) {
-            	push(ptr->data);
+            	stack[++top] = ptr->data;
             	printf("%d ", ptr->data);
                 visited[len++] = ptr->data;
                 break;
 			} else found = 0;
             ptr = ptr->link;
         }
-        if (ptr == NULL) pop();
+        if (ptr == NULL) stack[top--];
     }
 }
 
