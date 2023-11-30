@@ -8,39 +8,44 @@ typedef struct Node {
     struct Node *link;
 } Node;
 
-Node *queue = NULL;
-int front = -1, rear = -1;
+Node *front = NULL, *rear = NULL;
 
 void enqueue() {
 	int data;
 	printf("Enter the data for new node: ");
     scanf("%d", &data);
-    Node *newNode = (Node *)malloc(sizeof(Node));
+    Node *newNode = malloc(sizeof(Node));
     if (newNode == NULL) {
         printf("Memory allocation failed.\n");
 	    exit(1);
     }
     newNode->data = data;
     newNode->link = NULL;
-    if (queue == NULL) {
-    	queue = newNode;
+    if (rear == NULL) {
+    	rear = newNode;
+        front = newNode;
 	} else {
-		Node *ptr = queue;
-        while (ptr->link != NULL) {
-            ptr = ptr->link;
-        }
-    ptr->link = newNode;
+		rear->link = newNode;
+        rear = newNode;
     }
-    printf("Node inserted successfully\n");
+    printf("%d enqueued successfully\n", data);
 }
 
 void dequeue() {
-	queue = queue->link;
-	printf("Node Deleted successfully\n");
+    if (front == NULL) {
+        printf("Queue empty can't dequeue.\n");
+        return;
+    }
+    printf("%d dequeued successfully\n", front->data);
+	if (front->link == NULL) {
+        front = NULL;
+        rear = NULL;
+    } else
+        front = front->link;
 }
 
 void showQueue() {
-    Node *current = queue;
+    Node *current = front;
     if (current == NULL) {
         printf("Queue is empty.");
         return;
