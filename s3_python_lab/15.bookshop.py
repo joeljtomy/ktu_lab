@@ -7,61 +7,63 @@ class Book:
     def __init__(self, title, copies):
         self.title = title
         self.copies = copies
-    
+    def add(self, copies):
+        self.copies += copies
+    def remove(self, copies):
+        if self.copies >= copies:
+            self.copies -= copies
+            return True
+        else:
+            print(f'Not enough copies of "{title}".')
+            return False
 
-def add_book(bookStore, title, copies):
-    for book in bookStore:
+def add_book(bookShop, title, copies):
+    for book in bookShop:
         if book.title == title:
-            book.copies += copies
+            book.add(copies)
             break
     else:
         new_book = Book(title, copies)
-        bookStore.append(new_book)
+        bookShop.append(new_book)
 
-def sell_book(bookStore, title, copies):
-    for book in bookStore:
+def sell_book(bookShop, title, copies):
+    for book in bookShop:
         if book.title == title:
-            if book.copies >= copies:
-                book.copies -= copies
+            if book.remove(copies):
                 print(f'Sold {copies} copies of "{title}"')
                 if book.copies == 0:
-                    bookStore.remove(book)
-                break
-            else:
-                print(f'Not enough copies of "{title}" in stock.')
+                    bookShop.remove(book)
             break
     else:
         print(f'Book "{title}" not found.')
 
-def display_books(bookStore):
-    if len(bookStore):
-        print("Currently available books:")
-        for book in bookStore:
+def display_books(bookShop):
+    if len(bookShop):
+        print("Book Shop:")
+        for book in bookShop:
             print(f'"{book.title}": {book.copies} copies')
     else:
         print("No books in the shop.")
 
-bookStore = []
+bookShop = []
 
 while True:
     print("\nBookshop Management Menu:")
-    print("1. Add Book")
-    print("2. Sell Book")
-    print("3. Display all books")
-    print("4. Quit")
+    print("1. Add Book\n2. Sell Book")
+    print("3. Display all books\n4. Quit")
 
     choice = input("Enter your choice: ")
 
     if choice == '1':
         title = input("Enter the title of the book: ")
         copies = int(input("Enter the number of copies to add: "))
-        add_book(bookStore, title, copies)
+        add_book(bookShop, title, copies)
     elif choice == '2':
         title = input("Enter the title of the book: ")
         copies = int(input("Enter the number of copies to sell: "))
-        sell_book(bookStore, title, copies)
+        sell_book(bookShop, title, copies)
     elif choice == '3':
-        display_books(bookStore)
+        display_books(bookShop)
     elif choice == '4':
         print("Exiting the program.")
         break

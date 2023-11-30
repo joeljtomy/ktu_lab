@@ -9,7 +9,7 @@ else:
     for i in range(1, num + 1):
         fact *= i
 
-    print("Factorial of "+ str(num) +" is " + str(fact))
+    print("Factorial of", num, "is", fact)
 
 # Algorithm
 # 1. Start

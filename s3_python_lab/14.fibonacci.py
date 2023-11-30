@@ -1,16 +1,12 @@
 # 14. Find nth Fibonacci number using recursion.
 
-def fibonacci(n, series=[0,1]):
-    if n <= 1:
-        return 0
-    elif n == 2:
-        return 1
-    else:
-        return fibonacci(n - 1) + fibonacci(n - 2)
+def fibonacci(n):
+    if n <= 1: return 0
+    elif n == 2: return 1
+    else: return fibonacci(n - 1) + fibonacci(n - 2)
 
 n = int(input("Enter the value of n: "))
-nth = fibonacci(n)
-print(f"{n}th Fibonacci number = {nth}")
+print(f"{n}th Fibonacci number = {fibonacci(n)}")
 
 # Algorithm
 # 1. Start

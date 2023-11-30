@@ -13,8 +13,8 @@ for i in range(len(string)):
 
 words = len([word for word in string.split(" ") if word != ""])
 
-print("Vowels: "+ str(vowels) +", Consonants: "+ str(consonants))
-print("Words: "+ str(words) +", Question marks: "+ str(qn_marks))
+print("Vowels:", vowels, ", Consonants:", consonants)
+print("Words:", words, ", Question marks:", qn_marks)
 
 
 # Algorithm

@@ -1,24 +1,14 @@
 # 12. Implement a calculator with functions like add, subtract, multiply, divide, exponent etc.
 
-def add(a, b):
-    return a + b
+def add(a, b): return a + b
 
+def subtract(a, b): return a - b
 
-def subtract(a, b):
-    return a - b
+def multiply(a, b): return a * b
 
+def divide(a, b): return a / b
 
-def multiply(a, b):
-    return a * b
-
-
-def divide(a, b):
-    return a / b
-
-
-def exponent(a, b):
-    return a ** b
-
+def exponent(a, b): return a ** b
 
 n1 = int(input("Enter 1st operand: "))
 n2 = int(input("Enter 2nd operand: "))

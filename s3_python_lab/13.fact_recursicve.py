@@ -5,12 +5,11 @@ def factorial(num):
         return num * factorial(num - 1)
     return 1
 
-
 num = int(input("Enter the number: "))
 if num < 0 :
     print("number should be non-negative.")
 else :
-    print("factorial of {num} = {factorial(num)}")
+    print(f"factorial of {num} = {factorial(num)}")
 
 
 # Algorithm

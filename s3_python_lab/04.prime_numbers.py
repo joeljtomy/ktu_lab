@@ -5,11 +5,12 @@ high = int(input("Enter the high of the range: "))
 
 if low < 2:
     low = 2
+
 for num in range(low, high + 1):
     for x in range(2, num // 2 + 1):
         if num % x == 0:
             break
-    else : print(x, end = ", ")
+    else : print(x, end = " ")
 
 # Algorithm
 # 1. Start

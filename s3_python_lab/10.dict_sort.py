@@ -3,16 +3,11 @@
 
 phonebook = {}
 n = int(input("Enter the number of persons: "))
-i = 1
 
-while (i <= n):
+for i in range(1, n + 1):
     name = input(f"Enter the name for person {i}: ")
-    if name in phonebook.keys():
-        print("name already exists!")
-    else:
-        phone = input(f"Enter the phone number for {name}: ")
-        phonebook[name] = phone
-        i = i+1
+    phone = input(f"Enter the phone number for {name}: ")
+    phonebook[name] = phone
 
 print("Phonebook entries in alphabetical order:")
 for name in sorted(phonebook.keys()):

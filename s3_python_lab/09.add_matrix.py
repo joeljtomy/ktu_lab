@@ -1,6 +1,6 @@
 # 9.  Add two matrices.
 
-def input_matrix(rows, cols):
+def get_matrix(rows, cols):
     matrix = []
     for i in range(rows):
         row = []
@@ -9,22 +9,20 @@ def input_matrix(rows, cols):
         matrix.append(row)
     return matrix
 
-
 def display_matrix(matrix):
     for row in matrix:
-        for element in row:
-            print(element, end='  ')
+        for elm in row:
+            print(elm, end='  ')
         print()
-
 
 rows = int(input("Enter the number of rows for the matrices: "))
 cols = int(input("Enter the number of columns for the matrices: "))
 
 print("Enter the first matrix:")
-matrix1 = input_matrix(rows, cols)
+matrix1 = get_matrix(rows, cols)
 
 print("Enter the second matrix:")
-matrix2 = input_matrix(rows, cols)
+matrix2 = get_matrix(rows, cols)
 
 print("First matrix:")
 display_matrix(matrix1)
@@ -43,10 +41,10 @@ display_matrix(result)
 
 # Algorithm
 # 1. Start
-# 2. define function input_matrix to recieve a matrix.
+# 2. define function get_matrix to recieve a matrix.
 # 3. define function to print a matrix.
 # 4. recieve rows and coloumns of matrices.
-# 5. recieve matrix1 and matrix2 using input_matrix function.
+# 5. recieve matrix1 and matrix2 using get_matrix function.
 # 6. Display matrix1 and matrix2 using display_matrix function.
 # 7. Declare result = []
 # 8. Start loop for i in range(rows):
