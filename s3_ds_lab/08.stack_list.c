@@ -8,31 +8,32 @@ typedef struct Node {
     struct Node *link;
 } Node;
 
-Node *stack = NULL;
+Node *top = NULL;
 
 void push() {
 	int data;
 	printf("Enter the data for new node: ");
     scanf("%d", &data);
-    Node *newNode = (Node *)malloc(sizeof(Node));
+    Node *newNode = malloc(sizeof(Node));
     if (newNode == NULL) {
         printf("Memory allocation failed.\n");
 	    exit(1);
     }
     newNode->data = data;
-    newNode->link = NULL;
-    newNode->link = stack;
-    stack = newNode;
-    printf("Node inserted successfully\n");
+    newNode->link = top;
+    top = newNode;
+    printf("%d pushed successfully\n", data);
 }
 
 void pop() {
-	stack = stack->link;
-	printf("Node Deleted successfully\n");
+    if (top != NULL) {
+        printf("%d poped successfully\n", top->data);
+        top = top->link;
+	} else printf("Stack Underflow!");
 }
 
 void showStack() {
-    Node *current = stack;
+    Node *current = top;
     if (current == NULL) {
         printf("Stack is empty.");
         return;
@@ -46,43 +47,32 @@ void showStack() {
 }
 
 int main() {
-    int top = -1, choice, data;
+    int choice, data;
     printf("\nStack created.");
     while (1) {
         printf("\n\nOperations Menu:\n");
         printf("1. Push\n2. Pop\n");
-        printf("3. Status\n4. Exit\n");
+        printf("3. Display\n4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
         case 1:
-        	top += 1;
         	push();
         	showStack();
 			break;
         case 2:
-        	if (top > -1) {
-        		pop();
-        		top -= 1;
-        		showStack();
-			} else {
-				printf("Stack Underflow!");
-			}
+        	pop();
+        	showStack();
 			break;
         case 3:
-            if (top == -1) {
-        		printf("Stack Empty");
-			} else {
-				showStack();
-				printf("\nTop: %d", top);
-			}
+            showStack();
 			break;
         case 4:
-        	printf("Exiting program!!!\n");
+        	printf("Exiting program!\n");
         	exit(0);
         default:
-            printf("Invalid choice! Please try again.");
+            printf("Invalid choice!");
         }
     }
     return 0;

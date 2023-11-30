@@ -21,13 +21,8 @@ void enqueue() {
     }
     newNode->data = data;
     newNode->link = NULL;
-    if (rear == NULL) {
-    	rear = newNode;
-        front = newNode;
-	} else {
-		rear->link = newNode;
-        rear = newNode;
-    }
+    if (rear == NULL) rear = front = newNode;
+	else rear = rear->link = newNode;
     printf("%d enqueued successfully\n", data);
 }
 
@@ -37,11 +32,8 @@ void dequeue() {
         return;
     }
     printf("%d dequeued successfully\n", front->data);
-	if (front->link == NULL) {
-        front = NULL;
-        rear = NULL;
-    } else
-        front = front->link;
+	if (front->link == NULL) rear = NULL;
+    front = front->link;
 }
 
 void showQueue() {
@@ -63,10 +55,8 @@ int main() {
     printf("\nQueue created.");
     while (1) {
         printf("\n\nOpeations Menu:\n");
-        printf("1. Enqueue\n");
-        printf("2. Dequeue\n");
-        printf("3. Display queue\n");
-        printf("4. Exit\n");
+		printf("1. Enqueue\n2. Dequeue\n");
+		printf("3. Display\n4. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -83,10 +73,10 @@ int main() {
             showQueue();
 			break;
         case 4:
-        	printf("Exiting program!!!\n");
+        	printf("Exiting program!\n");
         	exit(0);
         default:
-            printf("Invalid choice! Please try again.");
+            printf("Invalid choice!");
         }
     }
     return 0;

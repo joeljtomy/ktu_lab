@@ -2,8 +2,7 @@
 
 #include <stdio.h>
 
-int main()
-{
+int main() {
     int i, n, key, found = 0, index;
 
     printf("Enter the size of array: ");
@@ -12,8 +11,7 @@ int main()
     int arr[n];
 
     printf("Enter array elements:\n");
-    for (i = 0; i < n; i++)
-    {
+    for (i = 0; i < n; i++) {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
     }
@@ -21,10 +19,8 @@ int main()
     printf("Enter the element to search: ");
     scanf("%d", &key);
 
-    for (i = 0; i < n; i++)
-    {
-        if (arr[i] == key)
-        {
+    for (i = 0; i < n; i++) {
+        if (arr[i] == key) {
             found = 1;
             index = i;
             break;

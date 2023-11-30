@@ -12,19 +12,18 @@ typedef struct Node {
 Node *head = NULL;
 
 void insertNode(int position) {
-    Node *newNode = (Node *)malloc(sizeof(Node));
+    Node *newNode = malloc(sizeof(Node));
     if (newNode == NULL) {
         printf("Memory allocation failed. Exiting.\n");
-        exit(EXIT_FAILURE);
+        exit(1);
     }
 
     printf("Enter data for the new node: ");
     scanf("%d", &newNode->data);
     newNode->link = NULL;
 
-    if (head == NULL) {
-        head = newNode;
-    } else {
+    if (head == NULL) head = newNode;
+    else {
         Node *ptr = head;
         if (position == 1) {
             newNode->link = head;
@@ -33,7 +32,7 @@ void insertNode(int position) {
             while (ptr->link != NULL)
                 ptr = ptr->link;
             ptr->link = newNode;
-        } else if (position == 3) {
+        } else {
             int key;
             printf("Enter data of the node after which you want to insert: ");
             scanf("%d", &key);
@@ -56,9 +55,8 @@ void deleteNode(int position) {
 
     Node *ptr = head;
 
-    if (position == 1) {
-        head = head->link;
-    } else if (position == 2) {
+    if (position == 1) head = head->link;
+    else if (position == 2) {
         if (head->link == NULL) {
             free(head);
             head = NULL;
@@ -113,21 +111,19 @@ void traverse() {
     }
 
     Node *ptr = head;
-    printf("Linked list elements: [");
+    printf("Linked list: ");
     while (ptr != NULL) {
-        printf("%d", ptr->data);
-        if (ptr->link != NULL) printf(" > ");
-        else printf("]");
+        if (ptr->link == NULL) printf("%d", ptr->data);
+		else printf("%d > ", ptr->data);
         ptr = ptr->link;
     }
-    printf("\n");
 }
 
 int main() {
     int choice, data;
 
-    do {
-        printf("\nLinked list  operations Menu:\n");
+    while (1) {
+        printf("\nLinked list operations Menu:\n");
         printf("Insertion:\n  1. At the beginning\n  2. At the end\n  3. After a node\n");
         printf("Deletion:\n  4. At the beginning\n  5. At the end\n  6. A specific node\n");
         printf("7. Search for a node\n8. Traverse the list\n9. Exit\n");
@@ -155,12 +151,12 @@ int main() {
                 traverse();
                 break;
             case 9:
-                printf("Exiting the program. Goodbye!\n");
-                exit(EXIT_SUCCESS);
+                printf("Exiting the program. Goodbye.\n");
+                exit(0);
             default:
-                printf("Invalid choice. Please try again.\n");
+                printf("Invalid choice!\n");
         }
-    } while (1);
+    };
 
     return 0;
 }

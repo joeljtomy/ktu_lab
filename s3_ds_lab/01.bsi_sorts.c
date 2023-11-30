@@ -5,29 +5,20 @@
 
 int i, j;
 
-void bubbleSort(int arr[], int n)
-{
-    for (i = 0; i < n - 1; i++)
-    {
-        for (j = 0; j < n - i - 1; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
+void insertionSort(int arr[], int n) {
+    for (i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key)
+            arr[j + 1] = arr[j--];
+        arr[j + 1] = key;
     }
 }
 
-void selectionSort(int arr[], int n)
-{
-    for (i = 0; i < n - 1; i++)
-    {
+void selectionSort(int arr[], int n) {
+    for (i = 0; i < n - 1; i++) {
         int smallest = i;
-        for (j = i + 1; j < n; j++)
-        {
+        for (j = i + 1; j < n; j++) {
             if (arr[j] < arr[smallest])
                 smallest = j;
         }
@@ -37,31 +28,26 @@ void selectionSort(int arr[], int n)
     }
 }
 
-void insertionSort(int arr[], int n)
-{
-    for (i = 1; i < n; i++)
-    {
-        int key = arr[i];
-        int j = i - 1;
-        while (j >= 0 && arr[j] > key)
-        {
-            arr[j + 1] = arr[j];
-            j--;
+void bubbleSort(int arr[], int n) {
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
         }
-        arr[j + 1] = key;
     }
 }
 
-void printArray(int arr[], int n)
-{
+void printArray(int arr[], int n) {
     for (i = 0; i < n; i++)
         printf("%d ", arr[i]);
     printf("\n");
 }
 
-int main()
-{
-    int i, n, opt;
+int main() {
+    int i, n, choice;
 
     printf("Enter the size of array: ");
     scanf("%d", &n);
@@ -69,44 +55,32 @@ int main()
     int arr[n], original[n];
 
     printf("Enter array elements:\n");
-    for (i = 0; i < n; i++)
-    {
+    for (i = 0; i < n; i++) {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
-        original[i] =   arr[i];
+        original[i] = arr[i];
     }
 
     printf("Original array: ");
     printArray(original, n);
 
-    while (1)
-    {
-        printf("\nSelect operation from menu\n");
-        printf("MENU : l.Bubble sort | 2.Selection sort | 3.Insertion sort | 4.Exit\n");
-        scanf("%d", &opt);
-        for (i = 0; i < n; i++)
-            arr[i] = original[i];
-        switch (opt)
-        {
-        case 1:
-            bubbleSort(arr, n);
-            break;
-        case 2:
-            selectionSort(arr, n);
-            break;
-        case 3:
-            insertionSort(arr, n);
-            break;
-        case 4:
-            printf("Program exited.\n");
-            exit(0);
-        default:
-            printf("Invalid choice!!!\n");
-            continue;
-        }
-        printf("Sorted array: ");
-        printArray(arr, n);
-    }
+    printf("Sorted array using Insertion sort: ");
+    insertionSort(arr, n);
+    printArray(arr, n);
+    for (i = 0; i < n; i++)
+        arr[i] = original[i];
+
+    printf("Sorted array using Selection sort: ");
+    selectionSort(arr, n);
+    printArray(arr, n);
+    for (i = 0; i < n; i++)
+        arr[i] = original[i];
+
+    printf("Sorted array using Bubble sort: ");
+    bubbleSort(arr, n);
+    printArray(arr, n);
+    for (i = 0; i < n; i++)
+        arr[i] = original[i];
 
     return 0;
 }

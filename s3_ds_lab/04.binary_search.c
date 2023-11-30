@@ -2,8 +2,7 @@
 
 #include <stdio.h>
 
-int main()
-{
+int main() {
     int i, n, key, found = 0, index, lowest;
 
     printf("Enter the size of array: ");
@@ -12,14 +11,12 @@ int main()
     int arr[n];
 
     printf("Enter sorted array elements:\n");
-    for (i = 0; i < n; i++)
-    {
+    for (i = 0; i < n; i++) {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
-        if (i == 0) {
-            lowest = arr[i];
-        } else if (arr[i] < lowest) {
-            printf("Please enter sorted array.");
+        if (i == 0) lowest = arr[i];
+        else if (arr[i] < lowest) {
+            printf("Please enter a sorted array.");
             return;
         }
     }
@@ -29,20 +26,16 @@ int main()
 
     int low = 0, high = n - 1, mid;
 
-    while (low <= high)
-    {
+    while (low <= high) {
         mid = (low + high) / 2;
 
-        if (arr[mid] == key)
-        {
+        if (arr[mid] == key) {
             found = 1;
             index = mid;
             break;
-        }
-        if (arr[mid] < key)
+        } else if (arr[mid] < key)
             low = mid + 1;
-        else
-            high = mid - 1;
+        else high = mid - 1;
     }
 
     if (found)

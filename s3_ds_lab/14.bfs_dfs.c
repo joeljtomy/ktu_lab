@@ -49,7 +49,7 @@ void enqueue(int value) {
 }
 
 void BFS(int start) {
-    int visited[SIZE] = {}, len = 0, i, found = 0;
+    int visited[SIZE], len = 0, i, found = 0;
 
     printf("\nBFS starting from vertex %d: ", start);
     enqueue(start);

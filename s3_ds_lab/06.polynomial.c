@@ -3,51 +3,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Term
-{
+typedef struct Term {
     int coef;
     int expo;
     struct Term *next;
-};
+} Term;
 
-struct Term *createTerm(int coef, int exp)
-{
-    struct Term *term = (struct Term *)malloc(sizeof(struct Term));
-    term->coef = coef;
-    term->expo = exp;
-    term->next = NULL;
-    return term;
-}
-
-struct Term *insertTerm(struct Term **head, int coef, int exp)
-{
-    struct Term *newTerm = createTerm(coef, exp);
-    if (*head == NULL || exp > (*head)->expo)
-    {
+Term *insertTerm(Term **head, int coef, int exp) {
+    Term *newTerm = malloc(sizeof(Term));
+    if (newTerm == NULL) {
+        printf("Memory allocation failed. Exiting.\n");
+        exit(1);
+    }
+    newTerm->coef = coef;
+    newTerm->expo = exp;
+    if (*head == NULL || exp > (*head)->expo) {
         newTerm->next = *head;
         *head = newTerm;
-    }
-    else
-    {
-        struct Term *current = *head;
-        while (current->next != NULL && current->next->expo >= exp)
-        {
-            current = current->next;
-        }
-        newTerm->next = current->next;
-        current->next = newTerm;
+    } else {
+        Term *ptr = *head;
+        while (ptr->next != NULL && ptr->next->expo >= exp)
+            ptr = ptr->next;
+        newTerm->next = ptr->next;
+        ptr->next = newTerm;
     }
     return newTerm;
 }
 
-struct Term *createPoly()
-{
+Term *createPoly() {
     int n, coef, expo, i;
     printf("Enter number of terms in polynomial: ");
     scanf("%d", &n);
-    struct Term *poly = NULL;
-    for (i = 0; i < n; i++)
-    {
+    Term *poly = NULL;
+    for (i = 0; i < n; i++) {
         printf("Enter coef & expo of term %d: ", i + 1);
         scanf("%d %d", &coef, &expo);
         insertTerm(&poly, coef, expo);
@@ -55,82 +43,59 @@ struct Term *createPoly()
     return poly;
 }
 
-struct Term *addPolynomials(struct Term *poly1, struct Term *poly2)
-{
-    struct Term *result = NULL;
-    struct Term *prev = NULL;
+Term *addPolynomials(Term *poly1, Term *poly2) {
+    Term *result = NULL;
+    Term *prev = NULL;
     int coef, expo;
 
-    while (poly1 != NULL || poly2 != NULL)
-    {
-        if (poly1 != NULL && poly2 != NULL)
-        {
-            if (poly1->expo == poly2->expo)
-            {
+    while (poly1 != NULL || poly2 != NULL) {
+        if (poly1 != NULL && poly2 != NULL) {
+            if (poly1->expo == poly2->expo) {
                 coef = poly1->coef + poly2->coef;
                 expo = poly1->expo;
                 poly1 = poly1->next;
                 poly2 = poly2->next;
-            }
-            else if (poly1->expo > poly2->expo)
-            {
+            } else if (poly1->expo > poly2->expo) {
                 coef = poly1->coef, expo = poly1->expo;
                 poly1 = poly1->next;
-            }
-            else
-            {
+            } else {
                 coef = poly2->coef, expo = poly2->expo;
                 poly2 = poly2->next;
             }
-        }
-        else if (poly1 != NULL)
-        {
+        } else if (poly1 != NULL) {
             coef = poly1->coef, expo = poly1->expo;
             poly1 = poly1->next;
-        }
-        else if (poly2 != NULL)
-        {
+        } else if (poly2 != NULL) {
             coef = poly2->coef, expo = poly2->expo;
             poly2 = poly2->next;
         }
 
-        if (prev && prev->expo == expo)
-        {
-            prev->coef += coef;
-        }
-        else
-        {
-            prev = insertTerm(&result, coef, expo);
-        }
+        if (prev && prev->expo == expo) prev->coef += coef;
+        else prev = insertTerm(&result, coef, expo);
     }
     return result;
 }
 
-void displayPolynomial(struct Term *poly)
-{
-    if (poly == NULL)
-    {
-        printf("0\n");
+void displayPolynomial(Term *poly) {
+    if (poly == NULL) {
+        printf("Empty");
         return;
     }
 
-    while (poly != NULL)
-    {
+    while (poly != NULL) {
         printf("%dx^%d", poly->coef, poly->expo);
         poly = poly->next;
         if (poly != NULL)
             printf(" + ");
     }
-    printf("\n");
 }
 
-int main()
-{
+int main() {
     printf("Enter polynomial 1:\n");
-    struct Term *poly1 = createPoly();
+    Term *poly1 = createPoly();
 
     printf("\nEnter polynomial 2:\n");
-    struct Term *poly2 = createPoly();
+    Term *poly2 = createPoly();
 
     printf("\nPolynomial 1: ");
     displayPolynomial(poly1);
@@ -138,7 +103,7 @@ int main()
     printf("\nPolynomial 2: ");
     displayPolynomial(poly2);
 
-    struct Term *result = addPolynomials(poly1, poly2);
+    Term *result = addPolynomials(poly1, poly2);
     printf("\nSum of Polynomials: ");
     displayPolynomial(result);
 

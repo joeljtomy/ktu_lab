@@ -32,20 +32,14 @@ void postorderTraversal(Node *root) {
 
 Node *createNode(int data) {
     Node *newNode = malloc(sizeof(Node));
+    if (newNode == NULL) {
+        printf("Memory allocation failed.\n");
+	    exit(1);
+    }
     newNode->data = data;
     newNode->left = NULL;
     newNode->right = NULL;
     return newNode;
-}
-
-Node *insertLeft(Node *root, int data) {
-    root->left = createNode(data);
-    return root->left;
-}
-
-Node *insertRight(Node *root, int data) {
-    root->right = createNode(data);
-    return root->right;
 }
 
 int main() {
@@ -55,17 +49,17 @@ int main() {
     Node *root = createNode(data);
     printf("Enter the data of left node: ");
     scanf("%d", &data);
-    insertLeft(root, data);
+    root->left = createNode(data);
     printf("Enter the data of right node: ");
     scanf("%d", &data);
-    insertRight(root, data);
+    root->right = createNode(data);
 
     printf("Enter the data for left child of left node: ");
     scanf("%d", &data);
-    insertLeft(root->left, data);
+    root->left->left = createNode(data);
     printf("Enter the data for right child of left node: ");
     scanf("%d", &data);
-    insertRight(root->left, data);
+    root->left->right = createNode(data);
 
     printf("\nInorder traversal: ");
     inorderTraversal(root);

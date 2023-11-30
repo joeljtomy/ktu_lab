@@ -5,10 +5,8 @@
 
 int i, j;
 
-void mergeSort(int arr[], int start, int end)
-{
-    if (start < end)
-    {
+void mergeSort(int arr[], int start, int end) {
+    if (start < end) {
         int middle = (start + end) / 2;
 
         mergeSort(arr, start, middle);
@@ -24,65 +22,52 @@ void mergeSort(int arr[], int start, int end)
         for (j = 0; j < n2; j++)
             right[j] = arr[middle + 1 + j];
 
-        i = 0;
-        j = 0;
+        i = j = 0;
         int k = start;
-        while (i < n1 || j < n2)
-        {
-            if ((j >= n2 || left[i] <= right[j]) && i < n1)
-            {
-                arr[k] = left[i];
-                i++;
-            }
-            else if ((i >= n1 || left[i] > right[j]) && j < n2)
-            {
-                arr[k] = right[j];
-                j++;
-            }
+        while (i < n1 && j < n2) {
+            if (left[i] <= right[j])
+                arr[k] = left[i++];
+            else
+                arr[k] = right[j++];
             k++;
         }
+        while (i < n1)
+           arr[k++] = left[i++];
+        while (j < n2)
+           arr[k++] = right[j++];
     }
 }
 
-void swap(int *a, int *b)
-{
+void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-void quickSort(int arr[], int start, int end)
-{
-    if (start < end)
-    {
+void quickSort(int arr[], int start, int end) {
+    if (start < end) {
         int pivotIndex = start;
         int pivotValue = arr[end];
 
-        for (i = start; i < end; i++)
-        {
+        for (i = start; i < end; i++) {
             if (arr[i] < pivotValue)
-            {
-                swap(&arr[i], &arr[pivotIndex]);
-                pivotIndex++;
-            }
+                swap(&arr[i], &arr[pivotIndex++]);
         }
 
         swap(&arr[pivotIndex], &arr[end]);
-
+        
         quickSort(arr, start, pivotIndex - 1);
         quickSort(arr, pivotIndex + 1, end);
     }
 }
 
-void printArray(int arr[], int n)
-{
+void printArray(int arr[], int n) {
     for (i = 0; i < n; i++)
         printf("%d ", arr[i]);
     printf("\n");
 }
 
-int main()
-{
+int main() {
     int n;
     printf("Enter the size of array: ");
     scanf("%d", &n);
@@ -90,8 +75,7 @@ int main()
     int arr[n], copy[n];
 
     printf("Enter array elements:\n");
-    for (i = 0; i < n; i++)
-    {
+    for (i = 0; i < n; i++) {
         printf("%d : ", i + 1);
         scanf("%d", &arr[i]);
         copy[i] = arr[i];

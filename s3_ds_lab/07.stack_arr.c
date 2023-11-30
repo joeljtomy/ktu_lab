@@ -3,12 +3,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void printArray(int arr[], int n) {
+void printStack(int arr[], int top) {
 	int i;
-	printf("Stack: ");
-    for (i = 0; i < n; i++) {
-        printf("%d, ", arr[i]);
-    }
+	if (top == -1) printf("Stack Empty");
+    else {
+	    printf("Stack: ");
+        for (i = 0; i <= top; i++)
+            printf("%d ", arr[i]);
+	}
 }
 
 int main() {
@@ -21,54 +23,36 @@ int main() {
 
 	while (1) {
 		printf("\n\nOperations Menu:\n");
-		printf("1. Push\n");
-		printf("2. Pop\n");
-		printf("3. Status\n");
-		printf("4. Exit\n");
-
+        printf("1. Push\n2. Pop\n");
+        printf("3. Display\n4. Exit\n");
 		printf("Enter your choice: ");
 		scanf("%d", &choice);
 
 		switch (choice) {
 		case 1:
 			if (top < n - 1) {
-				top += 1;
 				printf("Enter item to push: ");
 				scanf("%d", &data);
-				stack[top] = data;
-				printArray(stack, top + 1);
+				stack[++top] = data;
+				printStack(stack, top);
 			}
-			else {
-				printf("Stack Overflow!");
-			}
+			else printf("Stack Overflow!");
 			break;
 		case 2:
 			if (top > -1) {
-				stack[top] = 0;
-				top -= 1;
-				printArray(stack, top + 1);
-
+				top--;
+				printStack(stack, top);
 			}
-			else {
-				printf("Stack Underflow!");
-			}
+			else printf("Stack Underflow!");
 			break;
 		case 3:
-			if (top == -1) {
-				printf("Stack Empty");
-			}
-			else if (top == n - 1) {
-				printf("Stack Full");
-			}
-			else {
-				printf("Top: %d", top);
-			}
+			printStack(stack, top);
 			break;
 		case 4:
-			printf("Program exited!!!\n");
+			printf("Program exited!\n");
 			exit(0);
 		default:
-			printf("Invalid choice! Please try again.");
+			printf("Invalid choice!");
 		}
 	}
 
