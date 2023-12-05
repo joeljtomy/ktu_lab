@@ -17,6 +17,6 @@ square.display()
 
 
 # Algorithm
-# 1. Start
+# 1. Start 
 
 # 11. Stop
