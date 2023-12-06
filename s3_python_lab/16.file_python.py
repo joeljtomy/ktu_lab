@@ -7,7 +7,7 @@ with open(file_path, "r") as file_in:
     content = file_in.read()
     print("file content:")
     print(content)
-    print("\nlines with python:")
+    print("\nLines with python:")
     for line in content.split("\n"):
         if "python" in line.lower():
             print(line)

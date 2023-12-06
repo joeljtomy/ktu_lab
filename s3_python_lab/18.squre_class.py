@@ -3,15 +3,17 @@
 #     and call method display to print output.
 
 class Square:
-    def __init__(self, number):
-        self.number = number
+    def __init__(self, num):
+        self.number = num
         self.output = 0
     def calculate(self):
-        self.output = self.number * self.number
+        self.output = self.number ** 2
     def display(self):
-        print("Square of", self.number, "is", self.output)
+        print("number:", self.number)
+        print("output:", self.output)
 
-square = Square(4)
+num = int(input("Enter a number: "))
+square = Square(num)
 square.calculate()
 square.display()
 

@@ -13,7 +13,7 @@ with open(file_path, "r") as file_in:
                 file_out.write(line+"\n")
 
 with open("file_out.txt", "r") as file_out:
-    print("file content after edit & copy:")
+    print("file content after removing blank lines:")
     print(file_out.read())
 
 # Algorithm

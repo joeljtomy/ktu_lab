@@ -3,16 +3,15 @@
 #     Develop a python program to implement the scenario.
 
 class Student:
-    def __init__(self, name, roll_number):
-        self.name = name
-        self.roll_number = roll_number
-
+    def __init__(self):
+        self.name = input("Enter name: ")
+        self.roll_num = int(input("Enter roll number: "))
     def showData(self):
         print("Name:", self.name)
-        print("Roll Number:", self.roll_number)
+        print("Roll Number:", self.roll_num)
 
-student1 = Student("John Doe", "12345")
-student2 = Student("Jane Doe", "67890")
+student1 = Student()
+student2 = Student()
 
 print("\nStudent 1:")
 student1.showData()
