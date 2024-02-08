@@ -1,7 +1,7 @@
 # 7.  Search an element in a list.
 
-list = input(
-    "Enter list elements (comma-separated): ").strip(',').split(',')
+listText = input("Enter list elements (comma-separated): ")
+list = listText.strip(',').split(',')
 key = input("Enter a search key: ")
 count = 0
 
@@ -14,7 +14,6 @@ if count != 0:
     print("Total", count, "appearences of", key)
 else:
     print(key, "not found in the list.")
-
 
 # Algorithm
 # 1. Start
