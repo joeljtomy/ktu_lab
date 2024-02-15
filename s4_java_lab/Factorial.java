@@ -1,13 +1,12 @@
 import java.util.Scanner;
 
 public class Factorial {
-    public int calculate(int number) {
+    public int calculateFactorial(int number) {
         if (number == 0) return 1;
-        return number * this.calculate(number - 1);
+        return number * this.calculateFactorial(number - 1);
     }
 
     public static void main(String args[]) {
-        Factorial factorial = new Factorial();
         System.out.print("Enter a number: ");
         Scanner input = new Scanner(System.in);
         int number = input.nextInt();
@@ -15,7 +14,9 @@ public class Factorial {
             System.out.println("Negative number is not allowed");
             return;
         }
-        int result = factorial.calculate(number);
+        
+        Factorial object = new Factorial();
+        int result = object.calculateFactorial(number);
         System.out.println("Factorial of " + number + " = " + result);
     }
 }   
