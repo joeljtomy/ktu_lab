@@ -1,3 +1,5 @@
+//5.  Develop a Java program to implement Stack operations using constructor.
+
 public class Stack {
     private int maxSize;
     private int[] stackArray;
