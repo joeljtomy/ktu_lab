@@ -1,0 +1,57 @@
+Programs
+
+SET 1
+1.	Develop a Java Program to display the details of bank account using Class.
+2.	Develop a Java Program to check whether a number is palindrome or not.
+3.	Develop a Java Program to find factorial of a number using recursion.
+4.	Construct a Java class to store some employee details and provide methods to set and
+    get values.
+5.	Develop a Java program to implement Stack operations using constructor.
+
+SET 2
+6.	Develop a java program to find area of a circle,square and rectangle using method 
+    overloading.
+7.	Develop a Java program to display Fibonacci series with and without recursion using 
+    method overloading.
+8.	Develop a Java program using constructor overloading to display student details.
+9.  Create a class distance with data members feet and inches. It contains a default 
+    constructor and a parameterized constructor and three methos setdistance, showdistance
+    and convertdistance. The convert distance function converts the distance in feet and
+    inches into cm, Develop a java program to implement this scenario.
+
+SET 3
+10. Develop a Java program to read and print students data using inheritance.
+    Class person: name, age, gender 
+    Class student( inherits from person): mark1, mark2, mark3, total marks, grade.
+11. Suppose your institution wishes to maintain a database of its employees. The database 
+    is divided into a number of classes  (Assistant Professor, Associate Professor, 
+    Professor etc). Construct a Super Class Person to store personal information. Derive 
+    all the above classes from the Class. Develop a Java program to specify all the classes 
+    and define functions to create the database and retrieve individual information as and 
+    when required. Support at least 5 employees on each category.
+12. Develop a java program to create an abstract class named Shape that contains two 
+    integers and an empty method named printArea(). Provide three classes named 
+    Rectangle, Triangle and Circle such that each one of the classes extends the class 
+    Shape. Each one of the classes contain only the method printArea( ) that prints the 
+    area of the given shape.
+
+SET 4
+13. Construct a Stack Class with proper exception handling mechanisms. While doing a 
+    Pop operation, if the stack is empty then display an error message. While doing a 
+    Push operation, if the stack is full then display corresponding error message. 
+14. Develop a java program that implements a multi-thread application that has three 
+    threads. First thread generates random integer for every 1 second and if the value is 
+    even, second thread computes the square of the number and prints and if the value is 
+    odd, the third thread will print the value of cube of the number.
+
+Cycle 5
+15. Develop a java program to create a login page using AWT.
+16. Develop a program that creates a user interface to perform integer divisions. The user 
+    enters two numbers in the text fields, Num1 and Num2. The division of Num1 and 
+    Num2 is displayed in the Result field when the Divide button is clicked. If Num1 or 
+    Num2 were not an integer, the program would throw a NumberFormatException. If 
+    Num2 were Zero, the program would throw an Arithmetic Exception Display the 
+    exception in a message dialog box
+17. Develop a Java program that works as a simple calculator using SWING. Use a grid 
+    layout to arrange buttons for the digits and for the +, -,*, % operations. Add a text 
+    field to display the result. Handle any possible exceptions like divide by zero. 
