@@ -1,3 +1,5 @@
+//2.  Develop a Java Program to check whether a number is palindrome or not.
+
 import java.util.Scanner;
 
 public class Palindrome {
@@ -17,9 +19,9 @@ public class Palindrome {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = input.nextInt();
-        Palindrome object = new Palindrome();
+        Palindrome p = new Palindrome();
 
-        if (object.isPalindrome(number)) {
+        if (p.isPalindrome(number)) {
             System.out.println(number + " is a Palindrome.");
         } else {
             System.out.println(number + " is not a Palindrome.");

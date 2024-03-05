@@ -1,9 +1,10 @@
+//1. Develop a Java Program to display the details of bank account using Class.
+
 import java.util.Scanner;
 
 public class BankAccount {
-    private String number;
-    private String holderName;
-    private double balance;
+    String number, holderName;
+    double balance;
 
     public void addAccountDetails() {
         Scanner input = new Scanner(System.in);

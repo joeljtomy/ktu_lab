@@ -1,3 +1,5 @@
+//3.  Develop a Java Program to find factorial of a number using recursion.
+
 import java.util.Scanner;
 
 public class Factorial {
@@ -15,8 +17,8 @@ public class Factorial {
             return;
         }
         
-        Factorial object = new Factorial();
-        int result = object.calculateFactorial(number);
+        Factorial f = new Factorial();
+        int result = f.calculateFactorial(number);
         System.out.println("Factorial of " + number + " = " + result);
     }
 }   
