@@ -1,0 +1,67 @@
+Programs
+
+Cycle 1
+
+EXPERIMENT NO:1 -DDL Commands
+ Create a table student (roll no,name,address,phone no.,gender,branch,mark1,mark2).
+ Modify the table structure to include new column total marks
+ Modify the size of the address attribute to 20.
+ Delete the column gender and branch from the table.
+ Rename the column mark1 to m1.
+ Rename the table student to student1
+ Remove the table structure.
+
+EXPERIMENT NO:2 -DDL Commands
+ Create tables
+  a. Department table with the attributes as given:
+     Dept no (primary key)
+     Dept_name (not NULL)
+     Dept_HOD (should start with Prof)
+  b. Create a student table with the attributes as given:
+     Roll_no(primary key)
+     Stud_name(first letter as either B,S,E,P)
+     Marks
+     Dept.no(foreign key referencing department table)
+     City(values must be “cochin”, ”Bombay”, “madras”, “delhi”)
+     Date_of_joining
+
+EXPERIMENT NO III: DML Commands
+ 1. Create a Student table with the following fields
+    Name, Roll no, Age, Branch and insert the following data into the table.
+    Name        Roll no Age Branch
+    Anil Kumar  201     18  IT
+    Ramesh V.   202     19  ME
+    John Paul   103     17  EC
+    Reema Dev   111     16  IT
+    Sachin Gaur 301     18  ME
+
+ 2. Create table called ‘Distributor’ with columns Dcode, Codename, Amount, Limit
+    and insert the following data.
+    Dcode Codename     Amount Limit
+    207   BlueStar Ltd 78,000 1,00,000
+    202   HCL Ltd      80,000 1,00,000
+    150   Microsystems 60,000 80,000
+    160   PHI Systems  -      90,000
+    203   Soft Agency  80,000 90,000
+
+ 3. Create a table called ‘Agencies’ with columns Agcode, Agname, Amount, Aglimit 
+ 4. and insert the following data into the table
+    Agcode Agname         Amount Aglimit
+    401    Nath & Co      2500   10,000
+    402    Ram Sons       3600   10,000
+    403    Krishna Stores 4000   15,000
+    409    Kantt Mart     3279   10,000
+    407    Paico          -      10,000
+
+ 5. Alter the structure of table student by adding a column called Totmarks and insert values 
+    into the added field
+ 6. Update the ‘Agencies table, set amount field to 5000 corresponding to Agcode = 403.
+ 7. Delete records from distributor table, whose amount is less than 70,000.
+ 8. Display the Agcode and Agname from table Agencies in reverse order of their amount.
+ 9. Display all Agency names for amount less than 4000 from table ‘Agencies’.
+ 10. Display the student info from student table renaming the fields name as studentname, roll 
+     no as student_rollno.
+ 11. Display the student info only in CS.
+ 12. Update the limit field and amount field of distributor table to 1, 50,000 and 10,000 
+     respectively whose limit is 1,00,000.
+ 13. Display the average of total marks of the student
