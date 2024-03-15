@@ -53,15 +53,15 @@ EXPERIMENT NO III: DML Commands
     409    Kantt Mart     3279   10,000
     407    Paico          -      10,000
 
- 5. Alter the structure of table student by adding a column called Totmarks and insert values 
-    into the added field
+ 5. Alter the structure of table student by adding a column called Totmarks and 
+    insert values into the added field
  6. Update the ‘Agencies table, set amount field to 5000 corresponding to Agcode = 403.
  7. Delete records from distributor table, whose amount is less than 70,000.
  8. Display the Agcode and Agname from table Agencies in reverse order of their amount.
  9. Display all Agency names for amount less than 4000 from table ‘Agencies’.
- 10. Display the student info from student table renaming the fields name as studentname, roll 
-     no as student_rollno.
- 11. Display the student info only in CS.
- 12. Update the limit field and amount field of distributor table to 1, 50,000 and 10,000 
-     respectively whose limit is 1,00,000.
+ 10. Display the student info from student table renaming the fields name as 
+     studentname, roll no as student_rollno.
+ 11. Display the student info only in CS Branch.
+ 12. Update the limit field and amount field of distributor table to 
+     1, 50,000 and 10,000 respectively whose limit is 1,00,000.
  13. Display the average of total marks of the student
