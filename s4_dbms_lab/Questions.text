@@ -138,3 +138,37 @@ EXPERIMENT NO 6: FAMILIARIZATION OF SET OPERATORS AND JOINS
    9. List the name of publisher which have got entry in both tables.
    10.List the name of publisher that have got entry in book_details but not in 
        publisher table
+
+EXPERIMENT NO 7: VIEWS
+   1. Create table product (pid,pname,unitprice,manufacturer,category,country).
+   2. Populate the table and display the details.
+   3. Create view v1 with pid, pname and category.
+   4. List the pname and country of all products whose category is ‘home appliances’
+      using views.
+   5. Populate v1 with values 501,XY505,mobilephone.
+   6. Modify pname as Xseries whose pid is 200.
+   7. Display the view to reflect the updation.
+   8. Modify the product table to set pid as primary key.
+   9. Create another view v2 with attributes pname,unit price and category.
+   10.Populate v2 with a row.
+   11.Delete the details of product whose pname is ‘Lenovo’.
+   12.Define another view v3 that contains employee id,ename,salary,dept id,and dept
+      name.(Create appropriate tables).
+   13.Modify the salary of all employees who belong to dept 10 by rupees 1000.
+   14.Modify the department table to set dept id as primary key.
+   15.Modify the table to set eid as primary and dept id as foreign key.
+   16.Insert a row to v3.
+
+DATE QUESTIONS( EXTRA)
+   1. Display today's date tomorrow's date.
+   2. Display the last date of this month.
+   3. Display the date of next monday.
+   4. Display the minimum length of employee name from employee table.
+   5. Display the details of employees whose name length is greater than 5.
+   6. Display the number of employees joined in each month.
+   7. Retrieve three characters from the word “encyclopedia” with respect to 
+      4 th position.
+   8. Replace all a's in the word “malayalam”.
+   9. Remove “OR” from the word “ORACLE”.
+   10.Write query to pad left of the word “DATABASE” with “.” to a column width of 12 
+      and then pad right with “_” upto a lenth of 15.
