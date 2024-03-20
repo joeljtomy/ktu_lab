@@ -30,8 +30,6 @@ public class FibonacciSeries {
         System.out.print("Enter the length of Fibonacci series: ");
         int count = scanner.nextInt();
 
-        scanner.close();
-
         System.out.println("Fibonacci Series without recursion:");
         displayFibonacci(count);
 
