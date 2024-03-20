@@ -52,8 +52,10 @@ public class Stack {
     }
 
     public static void main(String[] args) {
-        Stack stack = new Stack(5);
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the stack: ");
+        int size = scanner.nextInt();
+        Stack stack = new Stack(size);
         
         boolean exit = false;
         while (!exit) {
@@ -92,6 +94,5 @@ public class Stack {
                     System.out.println("Invalid choice. Please select a valid option.");
             }
         }
-        scanner.close();
     }
 }
