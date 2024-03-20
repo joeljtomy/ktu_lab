@@ -2,66 +2,139 @@ Programs
 
 Cycle 1
 
-EXPERIMENT NO:1 -DDL Commands
- Create a table student (roll no,name,address,phone no.,gender,branch,mark1,mark2).
- Modify the table structure to include new column total marks
- Modify the size of the address attribute to 20.
- Delete the column gender and branch from the table.
- Rename the column mark1 to m1.
- Rename the table student to student1
- Remove the table structure.
+EXPERIMENT NO 1: DDL Commands
+   Create a table student (roll no,name,address,phone no.,gender,branch,mark1,mark2).
+   Modify the table structure to include new column total marks
+   Modify the size of the address attribute to 20.
+   Delete the column gender and branch from the table.
+   Rename the column mark1 to m1.
+   Rename the table student to student1
+   Remove the table structure.
 
-EXPERIMENT NO:2 -DDL Commands
- Create tables
-  a. Department table with the attributes as given:
-     Dept no (primary key)
-     Dept_name (not NULL)
-     Dept_HOD (should start with Prof)
-  b. Create a student table with the attributes as given:
-     Roll_no(primary key)
-     Stud_name(first letter as either B,S,E,P)
-     Marks
-     Dept.no(foreign key referencing department table)
-     City(values must be “cochin”, ”Bombay”, “madras”, “delhi”)
-     Date_of_joining
+EXPERIMENT NO 2: DDL Commands
+   Create tables
+   a. Department table with the attributes as given:
+      Dept no (primary key)
+      Dept_name (not NULL)
+      Dept_HOD (should start with Prof)
+   b. Create a student table with the attributes as given:
+      Roll_no(primary key)
+      Stud_name(first letter as either B,S,E,P)
+      Marks
+      Dept.no(foreign key referencing department table)
+      City(values must be “cochin”, ”Bombay”, “madras”, “delhi”)
+      Date_of_joining
 
-EXPERIMENT NO III: DML Commands
- 1. Create a Student table with the following fields
-    Name, Roll no, Age, Branch and insert the following data into the table.
-    Name        Roll no Age Branch
-    Anil Kumar  201     18  IT
-    Ramesh V.   202     19  ME
-    John Paul   103     17  EC
-    Reema Dev   111     16  IT
-    Sachin Gaur 301     18  ME
+EXPERIMENT NO 3: DML Commands
+   1. Create a Student table with the following fields
+      Name, Roll no, Age, Branch and insert the following data into the table.
+      Name        Roll no  Age  Branch
+      Anil Kumar  201      18   IT
+      Ramesh V.   202      19   ME
+      John Paul   103      17   EC
+      Reema Dev   111      16   IT
+      Sachin Gaur 301      18   ME
 
- 2. Create table called ‘Distributor’ with columns Dcode, Codename, Amount, Limit
-    and insert the following data.
-    Dcode Codename     Amount Limit
-    207   BlueStar Ltd 78,000 1,00,000
-    202   HCL Ltd      80,000 1,00,000
-    150   Microsystems 60,000 80,000
-    160   PHI Systems  -      90,000
-    203   Soft Agency  80,000 90,000
+   2. Create table called ‘Distributor’ with columns Dcode, Codename, Amount, Limit
+      and insert the following data.
+      Dcode Codename      Amount  Limit
+      207   BlueStar Ltd  78,000  1,00,000
+      202   HCL Ltd       80,000  1,00,000
+      150   Microsystems  60,000  80,000
+      160   PHI Systems   -       90,000
+      203   Soft Agency   80,000  90,000
 
- 3. Create a table called ‘Agencies’ with columns Agcode, Agname, Amount, Aglimit 
- 4. and insert the following data into the table
-    Agcode Agname         Amount Aglimit
-    401    Nath & Co      2500   10,000
-    402    Ram Sons       3600   10,000
-    403    Krishna Stores 4000   15,000
-    409    Kantt Mart     3279   10,000
-    407    Paico          -      10,000
+   3. Create a table called ‘Agencies’ with columns Agcode, Agname, Amount, Aglimit 
+   4. and insert the following data into the table
+      Agcode  Agname          Amount  Aglimit
+      401     Nath & Co       2500    10,000
+      402     Ram Sons        3600    10,000
+      403     Krishna Stores  4000    15,000
+      409     Kantt Mart      3279    10,000
+      407     Paico           -       10,000
 
- 5. Alter the structure of table student by adding a column called Totmarks and 
-    insert values into the added field
- 6. Update the ‘Agencies table, set amount field to 5000 corresponding to Agcode = 403.
- 7. Delete records from distributor table, whose amount is less than 70,000.
- 8. Display the Agcode and Agname from table Agencies in reverse order of their amount.
- 9. Display all Agency names for amount less than 4000 from table ‘Agencies’.
- 10. Display the student info from student table renaming the fields name as 
-     studentname, roll no as student_rollno.
- 11. Display the student info only in CS Branch.
- 12. Update the limit field and amount field of distributor table to 
-     1, 50,000 and 10,000 respectively whose limit is 1,00,000.
- 13. Display the average of total marks of the student
+   5. Alter the structure of table student by adding a column called Totmarks and 
+      insert values into the added field
+   6. Update the ‘Agencies table, set amount field to 5000 corresponding to Agcode = 403.
+   7. Delete records from distributor table, whose amount is less than 70,000.
+   8. Display the Agcode and Agname from table Agencies in reverse order of their amount.
+   9. Display all Agency names for amount less than 4000 from table ‘Agencies’.
+   10.Display the student info from student table renaming the fields name as 
+      studentname, roll no as student_rollno.
+   11.Display the student info only in CS Branch.
+   12.Update the limit field and amount field of distributor table to 
+      1, 50,000 and 10,000 respectively whose limit is 1,00,000.
+   13.Display the average of total marks of the student
+
+EXPERIMENT NO 4: CREATION OF DATABASE USING CONSTRAINTS AND RELATIONSHIPS
+   1. Table department
+      dno primary key check(dno like 'd%'), dname, cnt_emp check(cnt_emp<15), dept_hod
+      DNO DNAME       CNT_EMP DEPT_HOD
+      d10 Production  1       John Doe
+      d11 Sales       2       Peter Parker
+      d12 Exporting   3       Paul Wesley
+      d20 Maintenance 3       Zuck
+      d30 Repair      8       Tim Payn
+      Cnt_emp = employee count, dept_hod = head of the department 
+
+   2. Table employee
+      eno primary key check(eno like 'e%'), ename, salary, dno references department(dno), 
+      mngrno, doj date, job , address, city check(city in('cochin','bombay','madras','delhi')), 
+      pincode.
+      ENO ENAME SALARY DNO MNGRNO DOJ       JOB      ADDRESS   CITY   PINCODE
+      e1  Don   1000   d10 1      18-JAN-65 sales    220 CB    cochin 65
+      e2  Donny 5000   d20 2      17-JAN-95 manager  Rosevila  delhi  35
+      e3  Jobin 9000   d30 5      17-JAN-45 accounts 22CB      bombay 72
+      e5  robin 900    d10 0      03-JAN-98 intern   22 CB     madras 45
+      e7  Jane  7500   d11 9      01-MAR-00 clerk    poovathil delhi  12
+      Eno = employee number, dno = department number, mngrno = manager number, 
+      doj = date of joining.
+
+      a. List the name of Employees joined after 1- 1- 1998 and working in department 
+         number d10.
+      b. List all employees working in department other than department number d30.
+      c. List the name of employees working in department sales.
+      d. List the name of employees who is not a manager.
+      e. List the employees whose names starts with ‘J’ and ‘N’ as third character.
+      f. List all the employees joined during the year 2000.
+      g. List the name of employees along with their annual salary, and also for 
+         each record, get the output, Every year <ename> earns <amount>
+      h. Find the total number of employees in employee table.
+      i. Display the minimum salary of various categories of employees.
+      j. List the minimum salary of various categories of employees in various 
+         departments having minimum salary greater than 7,000.
+      k. Find the minimum salary of manager in various departments.
+      l. List the names of all clerks along with the names of departments.
+      m. List the employee names and their date of joining in format dd/mm/yy.
+      n. Display ename, DNO of employees whose department is in department table
+      o. Display ename, DNO of employees whose job is in department table
+      p. Display dname, DNO of department where departmentno in is in employee table
+
+EXPERIMENT NO 5: AGGREGATE FUNCTIONS, GROUP BY AND HAVING CLAUSE
+   1. Create a table ACCOUNTS with attributes ACCNO, CUSTOMERNAME, BRANCH,
+      TYPE, OPENINGDATE, CURRENTBALANCE
+   2. Retrieve average balance from the table
+   3. Find the total number of accounts
+   4. Find the name of the customer who have highest balance
+   5. Find the total number of accounts segregated on the basis of account type per branch
+   6. Find out the customer having more than one account type in the bank
+   7. Find out the number of accounts opened in each branch after 3/01/2015 only if the 
+      number of accounts opened after 3/01/2015 exceed 1.
+   8. Find out total number of accounts of each branch
+   9. Find out number of accounts at each branch in the order of branch number
+
+EXPERIMENT NO 6: FAMILIARIZATION OF SET OPERATORS AND JOINS
+   1. Create the following table
+      a. book_details(ISBN, title, MRP, publisher name, author)
+      b. publisher (publisher_id, publisher name, city, state, country)
+   2. Populate the tables.
+   3. Display the details of all books.
+   4. Retrieve the details of all publishers.
+   5. List the name of books, price and city of publisher of all books.
+   6. List the details of books and their corresponding publisher details.
+   7. List all publishers, details of books published by each publisher.
+   8. List the name of publishers which have got entry either in book_details or 
+      publisher table.
+   9. List the name of publisher which have got entry in both tables.
+   10.List the name of publisher that have got entry in book_details but not in 
+       publisher table
