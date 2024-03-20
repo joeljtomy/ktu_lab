@@ -85,7 +85,7 @@ EXPERIMENT NO 4: CREATION OF DATABASE USING CONSTRAINTS AND RELATIONSHIPS
       e1  Don   1000   d10 1      18-JAN-65 sales    220 CB    cochin 65
       e2  Donny 5000   d20 2      17-JAN-95 manager  Rosevila  delhi  35
       e3  Jobin 9000   d30 5      17-JAN-45 accounts 22CB      bombay 72
-      e5  robin 900    d10 0      03-JAN-98 intern   22 CB     madras 45
+      e5  robin 900    d10        03-JAN-98 intern   22 CB     madras 45
       e7  Jane  7500   d11 9      01-MAR-00 clerk    poovathil delhi  12
       Eno = employee number, dno = department number, mngrno = manager number, 
       doj = date of joining.
