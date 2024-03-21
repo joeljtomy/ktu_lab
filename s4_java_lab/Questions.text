@@ -15,7 +15,7 @@ SET 2
     method overloading.
 8.	Develop a Java program using constructor overloading to display student details.
 9.  Create a class distance with data members feet and inches. It contains a default 
-    constructor and a parameterized constructor and three methos setdistance, showdistance
+    constructor and a parameterized constructor and three methods setdistance, showdistance
     and convertdistance. The convert distance function converts the distance in feet and
     inches into cm, Develop a java program to implement this scenario.
 
