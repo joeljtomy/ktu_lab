@@ -1,22 +1,18 @@
--- 1. Table department
---    dno primary key check(dno like 'd%'), dname, cnt_emp check(cnt_emp<15), dept_hod
+-- 1. 
 CREATE TABLE department (
     dno VARCHAR(10) PRIMARY KEY CHECK (dno LIKE 'd%'),
     dname VARCHAR(100),
-    cnt_emp INT CHECK (cnt_emp < 15),
+    cnt_emp NUMBER CHECK (cnt_emp < 15),
     dept_hod VARCHAR(100)
 );
 
 INSERT INTO department VALUES ('&dno', '&dname', &cnt_emp, '&dept_hod');
 
--- 2. Table employee
---    eno primary key check(eno like 'e%'), ename, salary, dno references department(dno), 
---    mngrno, doj date, job , address, city check(city in('cochin','bombay','madras','delhi')), 
---    pincode.
+-- 2. 
 CREATE TABLE employee (
     eno VARCHAR(10) PRIMARY KEY CHECK (eno LIKE 'e%'),
     ename VARCHAR(100),
-    salary NUMBER(10, 2),
+    salary NUMBER(10),
     dno VARCHAR(10) REFERENCES department(dno),
     mngrno NUMBER(10),
     doj DATE,
@@ -28,18 +24,18 @@ CREATE TABLE employee (
 
 INSERT INTO employee VALUES ('&eno', '&ename', &salary, '&dno', &mngrno, '&doj', '&job', '&address', '&city', &pincode);
 
--- a. List the name of Employees joined after 1- 1- 1998 and working in department 
---    number d10.
+-- a. 
 SELECT ename
 FROM employee
-WHERE doj > TO_DATE('1998-01-01', 'YYYY-MM-DD') AND dno = 'd10';
+WHERE doj > TO_DATE('1998-01-01', 'YYYY-MM-DD') 
+AND dno = 'd10';
 
--- b. List all employees working in department other than department number d30.
+-- b. 
 SELECT ename
 FROM employee
-WHERE dno <> 'd30';
+WHERE dno != 'd30';
 
--- c. List the name of employees working in department sales.
+-- c. 
 SELECT ename
 FROM employee
 WHERE dno = (
@@ -48,29 +44,42 @@ WHERE dno = (
     WHERE dname = 'Sales'
 )
 
--- d. List the name of employees who is not a manager.
+-- d. 
 SELECT ename
 FROM employee
 WHERE job != 'manager';
 
--- e. List the employees whose names starts with ‘J’ and ‘N’ as third character.
+-- e. 
 SELECT ename
 FROM employee
 WHERE ename LIKE 'J_N%';
 
--- f. List all the employees joined during the year 2000.
+-- f. 
 SELECT ename
 FROM employee
 WHERE EXTRACT(YEAR FROM doj) = 2000;
 
--- g. List the name of employees along with their annual salary, and also for 
---    each record, get the output, Every year <ename> earns <amount>
+-- g. 
 SELECT ename, salary * 12 AS annual_salary,
        CONCAT('Every year ', ename, ' earns ', salary * 12) AS output_msg
 FROM employee;
 
--- h. Find the total number of employees in employee table.
-SELECT COUNT(*)
+-- h. 
+SELECT COUNT(*) AS Total
 FROM employee;
 
 -- i. Display the minimum salary of various categories of employees.
+INSERT INTO employee VALUES ('&eno', '&ename', &salary, '&dno', &mngrno, '&doj', '&job', '&address', '&city', &pincode);
+/*
+ENO ENAME SALARY DNO MNGRNO DOJ       JOB      ADDRESS      CITY          PINCODE
+e4  Alice 1500   d10 3      12-FEB-80 sales    123 Main St  New York      10001
+e6  Bob   2000   d20 4      14-MAR-85 manager  456 Elm St   Los Angeles   90001
+e8  Carol 3000   d30 6      16-APR-90 accounts 789 Oak St   Chicago       60601
+e9  David 1200   d10 7      18-MAY-95 sales    101 Pine St  San Francisco 94101
+e10 Emily 2500   d20 8      20-JUN-00 manager  202 Maple St Boston        02101
+e11 Frank 3500   d30 10     22-JUL-05 accounts 303 Cedar St Philadelphia  19101
+*/
+
+SELECT job, MIN(salary)
+FROM employee
+GROUP BY job;
