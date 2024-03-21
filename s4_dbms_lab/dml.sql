@@ -74,5 +74,5 @@ SET Limit = 150000,
 WHERE Limit = 100000;
 
 -- 13. Display the average of total marks of the student.
-SELECT AVG(Totmarks) AS Avg_marks
+SELECT AVG(Totmarks) AS Avg_Total_Marks
 FROM Student;
