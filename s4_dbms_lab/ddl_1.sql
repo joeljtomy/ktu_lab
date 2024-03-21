@@ -1,18 +1,18 @@
 CREATE TABLE student (
-    roll_no INT PRIMARY KEY,
+    roll_no NUMBER PRIMARY KEY,
     name VARCHAR(50),
     address VARCHAR(100),
     phone_no VARCHAR(15),
     gender VARCHAR(10),
     branch VARCHAR(50),
-    mark1 INT,
-    mark2 INT
+    mark1 NUMBER,
+    mark2 NUMBER
 );
 
 DESC student;
 
 ALTER TABLE student
-ADD total_marks INT;
+ADD total_marks NUMBER;
 
 ALTER TABLE student
 MODIFY address VARCHAR(20);
