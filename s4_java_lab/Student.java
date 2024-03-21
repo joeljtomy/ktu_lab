@@ -24,9 +24,27 @@ public class Student {
     }
 
     public static void main(String[] args) {
-        Student student1 = new Student("John", 20);
-        Student student2 = new Student("Alice", 22, "Computer Science");
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Student 1: ");
+        System.out.print("Enter name: ");
+        String n = scanner.nextLine();
+        System.out.print("Enter id: ");
+        int i = scanner.nextInt();
+        Student student1 = new Student(n, i);
+        
+        System.out.println("\nStudent 2: ");
+        System.out.print("Enter name: ");
+        scanner.nextLine();
+        n = scanner.nextLine();
+        System.out.print("Enter id: ");
+        i = scanner.nextInt();
+        System.out.print("Enter department: ");
+        scanner.nextLine();
+        String d = scanner.nextLine();
+        Student student2 = new Student(n, i, d);
+
+        System.out.println();
         System.out.println("Student 1 Details:");
         student1.displayDetails();
         System.out.println();
