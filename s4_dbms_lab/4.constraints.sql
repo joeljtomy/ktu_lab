@@ -90,20 +90,18 @@ FROM employee;
 INSERT INTO employee VALUES ('&eno', '&ename', &salary, '&dno', &mngrno, '&doj', '&job', '&address', '&city', &pincode);
 /*
 ENO ENAME SALARY DNO MNGRNO DOJ       JOB      ADDRESS      CITY          PINCODE
-e4  Alice 1500   d11 3      12-FEB-80 sales    123 Main St  New York      10
-e6  Bob   2000   d21 4      14-MAR-85 manager  456 Elm St   Los Angeles   90
-e8  Carol 3000   d30 6      16-APR-90 accounts 789 Oak St   Chicago       60
-e9  David 1200   d20 7      18-MAY-95 sales    101 Pine St  San Francisco 94
-e10 Emily 2500   d12 8      20-JUN-00 manager  202 Maple St Boston        02
-e11 Frank 3500   d12 10     22-JUL-05 accounts 303 Cedar St Philadelphia  19
+e4  Alice 1500   d10 3      12-FEB-80 clerk    123 Main St  New York      10
+e6  Bob   2000   d11 4      14-MAR-85 manager  456 Elm St   Los Angeles   90
+e8  Carol 3000   d12 6      16-APR-90 accounts 789 Oak St   Chicago       60
+e9  David 1200   d20 7      18-MAY-95 Sales    101 Pine St  San Francisco 94
+e10 Frank 3500   d30 10     22-JUL-05 intern   303 Cedar St Philadelphia  19
 
 INSERT INTO employee (ENO, ENAME, SALARY, DNO, MNGRNO, DOJ, JOB, ADDRESS, CITY, PINCODE) VALUES 
-('e4', 'Alice', 1500, 'd11', 3, '1980-02-12', 'clerk', '123 Main St', 'bombay', 10),
-('e6', 'Bob', 2000, 'd21', 4, '1985-03-14', 'manager', '456 Elm St', 'cochin', 90),
-('e8', 'Carol', 3000, 'd30', 6, '1990-04-16', 'accounts', '789 Oak St', 'madras', 60),
-('e9', 'David', 1200, 'd20', 7, '1995-05-18', 'sales', '101 Pine St', 'bombay', 94),
-('e10', 'Emily', 2500, 'd12', 8, '2000-06-20', 'manager', '202 Maple St', 'cochin', 02),
-('e11', 'Frank', 3500, 'd12', 10, '2005-07-22', 'intern', '303 Cedar St', 'madras', 19);
+('e4', 'Alice', 1500, 'd10', 3, '1980-02-12', 'clerk', '123 Main St', 'bombay', 10),
+('e6', 'Bob', 2000, 'd11', 4, '1985-03-14', 'manager', '456 Elm St', 'cochin', 90),
+('e8', 'Carol', 3000, 'd12', 6, '1990-04-16', 'accounts', '789 Oak St', 'madras', 60),
+('e9', 'David', 1200, 'd20', 7, '1995-05-18', 'Sales', '101 Pine St', 'bombay', 94),
+('e10', 'Frank', 3500, 'd30', 10, '2005-07-22', 'intern', '303 Cedar St', 'madras', 19);
 */
 
 SELECT job, MIN(salary) AS Min_Salary
