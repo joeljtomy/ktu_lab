@@ -56,8 +56,7 @@ SELECT Agname
 FROM Agencies
 WHERE Amount < 4000;
 
--- 10. Display the student info from student table renaming the fields 
---     name as studentname, roll no as student_rollno.
+-- 10. Display the student info from student table renaming the fields name as studentname, roll no as student_rollno.
 SELECT Name AS studentname, Roll_no AS student_rollno, Age, Branch, Totmarks
 FROM student;
 
@@ -68,8 +67,7 @@ SELECT *
 FROM Student
 WHERE Branch = 'CS';
 
--- 12. Update the limit field and amount field of distributor table 
---     to 1, 50,000 and 10,000 respectively whose limit is 1,00,000.
+-- 12. Update the limit field and amount field of distributor table to 1, 50,000 and 10,000 respectively whose limit is 1,00,000.
 UPDATE Distributor
 SET Limit = 150000,
     Amount = 10000
