@@ -3,7 +3,7 @@
 import java.util.Scanner;
 public class FibonacciSeries {
 
-    public static void displayFibonacci(int count) {
+    void series(int count) {
         int first = 0, second = 1;
 
         System.out.print(first + " " + second + " ");
@@ -17,24 +17,24 @@ public class FibonacciSeries {
         System.out.println();
     }
 
-    public static void displayFibonacci(int count, int first, int second) {
+    void series(int count, int first, int second) {
         if (count <= 0) return;
         
         System.out.print(first + " ");
-        displayFibonacci(count - 1, second, first + second);
+        series(count - 1, second, first + second);
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         System.out.print("Enter the length of Fibonacci series: ");
         int count = scanner.nextInt();
 
+        Fibonacci fibonacci = new Fibonacci();
         System.out.println("Fibonacci Series without recursion:");
-        displayFibonacci(count);
+        fibonacci.series(count);
 
         System.out.println("Fibonacci Series with recursion:");
-        displayFibonacci(count, 0, 1);
+        fibonacci.series(count, 0, 1);
 
     }
 }
