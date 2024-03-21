@@ -12,14 +12,6 @@ public class Stack {
         this.top = -1;
     }
 
-    public boolean isEmpty() {
-        return (top == -1);
-    }
-
-    public boolean isFull() {
-        return (top == maxSize - 1);
-    }
-
     public void push(int value) {
         if (top < maxSize - 1) {
             stackArray[++top] = value;
@@ -41,7 +33,7 @@ public class Stack {
     }
 
     public void display() {
-        if (isEmpty()) {
+        if (top == -1) {
             System.out.println("Stack is empty.");
         } else {
             System.out.println("Stack elements:");
@@ -63,10 +55,8 @@ public class Stack {
             System.out.println("Select operation:");
             System.out.println("1. Push");
             System.out.println("2. Pop");
-            System.out.println("3. Check if stack is full");
-            System.out.println("4. Check if stack is empty");
-            System.out.println("5. Display stack");
-            System.out.println("6. Exit");
+            System.out.println("3. Display stack");
+            System.out.println("4. Exit");
             
             System.out.print("Enter choice: ");
             int choice = scanner.nextInt();
@@ -79,15 +69,9 @@ public class Stack {
                     stack.pop();
                     break;
                 case 3:
-                    System.out.println("Is the stack full? " + stack.isFull());
-                    break;
-                case 4:
-                    System.out.println("Is the stack empty? " + stack.isEmpty());
-                    break;
-                case 5:
                     stack.display();
                     break;
-                case 6:
+                case 4:
                     exit = true;
                     break;
                 default:
