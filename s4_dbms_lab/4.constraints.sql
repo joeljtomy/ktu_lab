@@ -51,7 +51,7 @@ AND dno = 'd10';
 -- b. 
 SELECT ename
 FROM employee
-WHERE dno != 'd30';
+WHERE NOT dno = 'd30';
 
 -- c. 
 SELECT ename
@@ -65,7 +65,7 @@ WHERE dno = (
 -- d. 
 SELECT ename
 FROM employee
-WHERE job != 'manager';
+WHERE NOT job = 'manager';
 
 -- e. 
 SELECT ename
@@ -86,7 +86,7 @@ FROM employee;
 SELECT COUNT(*) AS Total_Employees
 FROM employee;
 
--- i. Display the minimum salary of various categories of employees.
+-- i. 
 INSERT INTO employee VALUES ('&eno', '&ename', &salary, '&dno', &mngrno, '&doj', '&job', '&address', '&city', &pincode);
 /*
 ENO ENAME SALARY DNO MNGRNO DOJ       JOB      ADDRESS      CITY          PINCODE
@@ -108,29 +108,29 @@ SELECT job, MIN(salary) AS Min_Salary
 FROM employee
 GROUP BY job;
 
--- j. List the minimum salary of various categories of employees in various departments having minimum salary greater than 7,000.
+-- j. 
 SELECT dno, job, MIN(salary) AS Min_Salary
 FROM employee
 GROUP BY dno, job
 HAVING MIN(salary) > 7000;
 
--- k. Find the minimum salary of manager in various departments.
+-- k. 
 SELECT dno, MIN(salary) AS Min_Manager_Salary
 FROM employee
 WHERE job = 'manager'
 GROUP BY dno;
 
--- l. List the names of all clerks along with the names of departments.
+-- l. 
 SELECT e.ename, d.dname
 FROM employee e
 JOIN department d ON e.dno = d.dno
 WHERE e.job = 'clerk';
 
--- m. List the employee names and their date of joining in format dd/mm/yy.
+-- m. 
 SELECT ename, TO_CHAR(doj, 'DD-MM-YYYY') AS doj_formated
 FROM employee;
 
--- n. Display ename, DNO of employees whose department is in department table
+-- n. 
 SELECT ename, dno
 FROM employee
 WHERE dno IN (
@@ -138,7 +138,7 @@ WHERE dno IN (
     FROM department
 );
 
--- o. Display ename, DNO of employees whose job is in department table
+-- o. 
 SELECT ename, dno
 FROM employee
 WHERE job IN (
@@ -146,7 +146,7 @@ WHERE job IN (
     FROM department
 );
 
--- p. Display dname, DNO of department where departmentno is in employee table
+-- p.
 SELECT dname, dno
 FROM department
 WHERE dno IN (
