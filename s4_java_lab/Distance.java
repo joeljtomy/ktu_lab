@@ -24,41 +24,41 @@ public class Distance {
     }
 
     void showDistance() {
-        System.out.prdoubleln("Feet distance: " + feet);
-        System.out.prdoubleln("Inches distance: " + inches);
+        System.out.println(feet + " feet.");
+        System.out.println(inches + " inches.");
     }
 
     void convertDistance() {
-        System.out.prdoubleln("Feet distance to cm: " + feet * 30.48);
-        System.out.prdoubleln("Inches distance to cm: " + 2.54 * inches);
+        System.out.println(feet + " feet = " + feet * 30.48 + " cm.");
+        System.out.println(inches + " inches = " + 2.54 * inches + " cm.");
     }
 
     public static void main(String args[]) {
         Scanner scanner = new Scanner(System.in);
         Distance d1 = new Distance();
 
-        System.out.prdoubleln("Enter Distance 1");
-        System.out.prdouble("Enter feet: ");
-        double f = scanner.nextdouble();
-        System.out.prdouble("Enter inches: ");
-        double i = scanner.nextdouble();
+        System.out.println("Enter Distance 1");
+        System.out.print("Enter feet: ");
+        double f = scanner.nextDouble();
+        System.out.print("Enter inches: ");
+        double i = scanner.nextDouble();
         d1.setDistance(f, i);
 
-        System.out.prdoubleln("Enter Distance 2");
-        System.out.prdouble("Enter feet: ");
-        f = scanner.nextdouble();
-        System.out.prdouble("Enter inches: ");
-        i = scanner.nextdouble();
+        System.out.println("Enter Distance 2");
+        System.out.print("Enter feet: ");
+        f = scanner.nextDouble();
+        System.out.print("Enter inches: ");
+        i = scanner.nextDouble();
         Distance d2 = new Distance(f, i);
 
-        System.out.prdoubleln("\nDistance 1 data");
+        System.out.println("\nDistance object 1:");
         d1.showDistance();
-        System.out.prdoubleln("Distance 2 data");
+        System.out.println("Distance object 2:");
         d2.showDistance();
 
-        System.out.prdoubleln("\nDistance 1 to cm");
+        System.out.println("\nDistance 1 to cm");
         d1.convertDistance();
-        System.out.prdoubleln("Distance 2 to cm");
+        System.out.println("Distance 2 to cm");
         d2.convertDistance();
     }
 }
