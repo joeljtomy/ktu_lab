@@ -19,6 +19,13 @@ CREATE TABLE publisher (
 -- 2
 INSERT INTO book_details VALUES ('&ISBN', '&title', &MRP, '&publisher_name', '&author');
 /*
+ISBN              title       MRP   publisher_name author
+978-3-16-148410-0 Gatsby      25.99 Penguin        F. Scott Fitzgerald
+978-3-16-148411-0 Mockingbird 20.50 Harper         Harper Lee
+978-3-16-148412-0 1984        18.75 Vintage        George Orwell
+978-3-16-148413-0 Prejudice   22.00 Harper         Jane Austen
+978-3-16-148414-0 Catcher     17.99 Penguin        J.D. Salinger
+
 INSERT INTO book_details (ISBN, title, MRP, publisher_name, author) VALUES 
 ('978-3-16-148410-0', 'The Great Gatsby', 25.99, 'Penguin Books', 'F. Scott Fitzgerald'),
 ('978-3-16-148411-0', 'To Kill a Mockingbird', 20.50, 'HarperCollins', 'Harper Lee'),
