@@ -1,3 +1,7 @@
+//10. Develop a Java program to read and print students data using inheritance.
+//    Class person: name, age, gender 
+//    Class student( inherits from person): mark1, mark2, mark3, total marks, grade.
+
 import java.util.Scanner;
 
 class Person {
