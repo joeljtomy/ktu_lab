@@ -1,36 +1,35 @@
 //8.  Create a class distance with data members feet and inches. It contains a 
 //    default constructor and a parameterized constructor and three methods 
 //    setdistance, showdistance and convertdistance. The convert distance 
-//    function converts the distance in feet and inches doubleo cm, Develop a java 
+//    function converts the distance in feet and inches into cm, Develop a java 
 //    program to implement this scenario.
 import java.util.Scanner;
 
 public class Distance {
-    double feet, inches;
+    int feet, inches;
 
     Distance() {
         feet = 0;
         inches = 0;
     }
 
-    Distance(double f, double i) {
+    Distance(int f, int i) {
         feet = f;
         inches = i;
     }
 
-    void setDistance(double f, double i) {
+    void setDistance(int f, int i) {
         feet = f;
         inches = i;
     }
 
     void showDistance() {
-        System.out.println(feet + " feet.");
-        System.out.println(inches + " inches.");
+        System.out.println("Distance = " + feet + "feet " + inches + "inches.");
     }
 
     void convertDistance() {
-        System.out.println(feet + " feet = " + feet * 30.48 + " cm.");
-        System.out.println(inches + " inches = " + 2.54 * inches + " cm.");
+        double cm = (feet * 12 * 2.54) + (inches * 2.54);
+        System.out.println(feet + "feet " + inches + "inches = " + cm + "cm.");
     }
 
     public static void main(String args[]) {
@@ -39,16 +38,16 @@ public class Distance {
 
         System.out.println("Enter Distance 1");
         System.out.print("Enter feet: ");
-        double f = scanner.nextDouble();
+        int f = scanner.nextInt();
         System.out.print("Enter inches: ");
-        double i = scanner.nextDouble();
+        int i = scanner.nextInt();
         d1.setDistance(f, i);
 
         System.out.println("Enter Distance 2");
         System.out.print("Enter feet: ");
-        f = scanner.nextDouble();
+        f = scanner.nextInt();
         System.out.print("Enter inches: ");
-        i = scanner.nextDouble();
+        i = scanner.nextInt();
         Distance d2 = new Distance(f, i);
 
         System.out.println("\nDistance object 1:");
