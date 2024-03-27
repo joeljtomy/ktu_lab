@@ -9,6 +9,13 @@ CREATE TABLE department (
 INSERT INTO department VALUES ('&dno', '&dname', &cnt_emp, '&dept_hod');
 
 /*
+DNO DNAME       CNT_EMP DEPT_HOD
+d10 Production  1       John Doe
+d11 Sales       2       Peter Parker
+d12 Exporting   3       Paul Wesley
+d20 Maintenance 3       Zuck
+d30 Repair      8       Tim Payn
+
 INSERT INTO department (dno, dname, cnt_emp, dept_hod) VALUES 
 ('d10', 'Production', 1, 'John Doe'),
 ('d11', 'Sales', 2, 'Peter Parker'),
@@ -34,18 +41,25 @@ CREATE TABLE employee (
 INSERT INTO employee VALUES ('&eno', '&ename', &salary, '&dno', &mngrno, '&doj', '&job', '&address', '&city', &pincode);
 
 /*
+ENO ENAME SALARY DNO MNGRNO DOJ       JOB      ADDRESS   CITY   PINCODE
+e1  Don   1000   d10 1      18-JAN-65 sales    220 CB    cochin 65
+e2  Donny 5000   d20 2      17-JAN-95 manager  Rosevila  delhi  35
+e3  Jobin 9000   d30 5      17-JAN-45 accounts 22CB      bombay 72
+e5  robin 900    d10        03-JAN-98 intern   22 CB     madras 45
+e7  Jane  7500   d11 9      01-MAR-00 clerk    poovathil delhi  12
+
 INSERT INTO employee (ENO, ENAME, SALARY, DNO, MNGRNO, DOJ, JOB, ADDRESS, CITY, PINCODE) VALUES 
-('e1', 'Don', 1000, 'd10', 1, '1965-01-18', 'sales', '220 CB', 'cochin', 65),
-('e2', 'Donny', 5000, 'd20', 2, '1995-01-17', 'manager', 'Rosevila', 'delhi', 35),
-('e3', 'Jobin', 9000, 'd30', 5, '1945-01-17', 'accounts', '22CB', 'bombay', 72),
-('e5', 'robin', 900, 'd10', NULL, '1998-01-03', 'intern', '22 CB', 'madras', 45),
-('e7', 'Jane', 7500, 'd11', 9, '2000-03-01', 'clerk', 'poovathil', 'delhi', 12);
+('e1', 'Don', 1000, 'd10', 1, '18-JAN-65', 'sales', '220 CB', 'cochin', 65),
+('e2', 'Donny', 5000, 'd20', 2, '17-JAN-95', 'manager', 'Rosevila', 'delhi', 35),
+('e3', 'Jobin', 9000, 'd30', 5, '17-JAN-45', 'accounts', '22CB', 'bombay', 72),
+('e5', 'robin', 900, 'd10', NULL, '03-JAN-98', 'intern', '22 CB', 'madras', 45),
+('e7', 'Jane', 7500, 'd11', 9, '01-MAR-00', 'clerk', 'poovathil', 'delhi', 12);
 */
 
 -- a. 
 SELECT ename
 FROM employee
-WHERE doj > TO_DATE('1998-01-01', 'YYYY-MM-DD') 
+WHERE doj > '1-1-1998'
 AND dno = 'd10';
 
 -- b. 
@@ -54,18 +68,16 @@ FROM employee
 WHERE NOT dno = 'd30';
 
 -- c. 
-SELECT ename
-FROM employee
-WHERE dno = (
-    SELECT dno
-    FROM department
-    WHERE dname = 'Sales'
-)
+SELECT e.ename
+FROM employee e
+JOIN department d
+ON e.dno = d.dno
+WHERE dname = 'Sales';
 
 -- d. 
 SELECT ename
 FROM employee
-WHERE NOT job = 'manager';
+WHERE job != 'manager';
 
 -- e. 
 SELECT ename
@@ -78,8 +90,7 @@ FROM employee
 WHERE EXTRACT(YEAR FROM doj) = 2000;
 
 -- g. 
-SELECT ename, salary * 12 AS Annual_salary,
-       CONCAT('Every year ', ename, ' earns ', salary * 12) AS output_msg
+SELECT ename, salary * 12 AS Annual_salary, CONCAT('Every year ', ename, ' earns ', salary * 12) AS output_msg
 FROM employee;
 
 -- h. 
@@ -89,29 +100,39 @@ FROM employee;
 -- i. 
 INSERT INTO employee VALUES ('&eno', '&ename', &salary, '&dno', &mngrno, '&doj', '&job', '&address', '&city', &pincode);
 /*
-ENO ENAME SALARY DNO MNGRNO DOJ       JOB      ADDRESS      CITY          PINCODE
-e4  Alice 1500   d10 3      12-FEB-80 clerk    123 Main St  New York      10
-e6  Bob   2000   d11 4      14-MAR-85 manager  456 Elm St   Los Angeles   90
-e8  Carol 3000   d12 6      16-APR-90 accounts 789 Oak St   Chicago       60
-e9  David 1200   d20 7      18-MAY-95 Sales    101 Pine St  San Francisco 94
-e10 Frank 3500   d30 10     22-JUL-05 intern   303 Cedar St Philadelphia  19
+ENO ENAME SALARY DNO MNGRNO DOJ       JOB      ADDRESS    CITY   PINCODE
+e4  Alice 8000   d12 1      12-FEB-80 clerk    220A CB    bombay 15
+e6  Bob   5500   d11 2      14-JUN-85 manager  Rosewood   madras 40
+e8  Carol 9500   d12 5      16-APR-90 accounts 22A CB     cochin 60
+e9  David 1200   d30 9      18-MAY-95 sales    220B CB    delhi  32
+e10 Frank 1200   d11 1      20-JUL-05 intern   Rosegarden madras 20
+e11 John  7300   d20 2      29-AUG-80 clerk    22B CB     cochin 25
+e12 Liam  6000   d10 5      21-SEP-85 manager  220C CB    bombay 30
+e13 Maya  8500   d20 9      17-OCT-90 accounts Rosehill   cochin 42
+e14 Alex  1000   d12 1      15-NOV-95 sales    22C CB     bombay 50
+e15 Sofia 1000   d30 2      24-DEC-05 intern   220D CB    madras 52
 
 INSERT INTO employee (ENO, ENAME, SALARY, DNO, MNGRNO, DOJ, JOB, ADDRESS, CITY, PINCODE) VALUES 
-('e4', 'Alice', 1500, 'd10', 3, '1980-02-12', 'clerk', '123 Main St', 'bombay', 10),
-('e6', 'Bob', 2000, 'd11', 4, '1985-03-14', 'manager', '456 Elm St', 'cochin', 90),
-('e8', 'Carol', 3000, 'd12', 6, '1990-04-16', 'accounts', '789 Oak St', 'madras', 60),
-('e9', 'David', 1200, 'd20', 7, '1995-05-18', 'Sales', '101 Pine St', 'bombay', 94),
-('e10', 'Frank', 3500, 'd30', 10, '2005-07-22', 'intern', '303 Cedar St', 'madras', 19);
+('e4', 'Alice', 8000, 'd12', 1, '12-FEB-80', 'clerk', '220A CB', 'bombay', 15),
+('e6', 'Bob', 5500, 'd11', 2, '14-MAR-85', 'manager', 'Rosewood', 'madras', 40),
+('e8', 'Carol', 9500, 'd12', 5, '16-APR-90', 'accounts', '22A CB', 'cochin', 60),
+('e9', 'David', 1200, 'd30', 9, '18-MAY-95', 'sales', '220B CB', 'delhi', 32),
+('e10', 'Frank', 1200, 'd11', 1, '22-JUL-05', 'intern', 'Rosegarden', 'madras', 20),
+('e11', 'John', 7300, 'd20', 2, '29-AUG-80', 'clerk', '22B CB', 'cochin', 25),
+('e12', 'Liam', 6000, 'd10', 5, '21-SEP-85', 'manager', '220C CB', 'bombay', 30),
+('e13', 'Maya', 8500, 'd20', 9, '17-OCT-90', 'accounts', 'Rosehill', 'cochin', 42),
+('e14', 'Alex', 1000, 'd12', 1, '15-NOV-95', 'sales', '22C CB', 'bombay', 50),
+('e15', 'Sofia', 1000, 'd30', 2, '22-DEC-05', 'intern', '220D CB', 'madras', 52);
 */
 
 SELECT job, MIN(salary) AS Min_Salary
 FROM employee
 GROUP BY job;
 
--- j. 
-SELECT dno, job, MIN(salary) AS Min_Salary
+-- j.
+SELECT job, dno, MIN(salary) AS Min_Salary
 FROM employee
-GROUP BY dno, job
+GROUP BY job, dno
 HAVING MIN(salary) > 7000;
 
 -- k. 
@@ -123,7 +144,8 @@ GROUP BY dno;
 -- l. 
 SELECT e.ename, d.dname
 FROM employee e
-JOIN department d ON e.dno = d.dno
+JOIN department d 
+ON e.dno = d.dno
 WHERE e.job = 'clerk';
 
 -- m. 
@@ -131,12 +153,10 @@ SELECT ename, TO_CHAR(doj, 'DD-MM-YYYY') AS doj_formated
 FROM employee;
 
 -- n. 
-SELECT ename, dno
-FROM employee
-WHERE dno IN (
-    SELECT dno
-    FROM department
-);
+SELECT e.ename, e.dno
+FROM employee e
+JOIN department d
+ON e.dno = d.dno
 
 -- o. 
 SELECT ename, dno
@@ -145,6 +165,7 @@ WHERE job IN (
     SELECT dname
     FROM department
 );
+-- new rows required to work. question unclear. revise the query.
 
 -- p.
 SELECT dname, dno
